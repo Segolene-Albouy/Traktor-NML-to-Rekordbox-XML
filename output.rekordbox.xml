@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DJ_PLAYLISTS Version="1.0.0">
+  <PRODUCT Name="Cross DJ Free" Version="3.4.0 (64bits)" Company="MixVibes"/>
+  <COLLECTION Entries="6">
+    <TRACK TrackID="3177" Name="Ich Bin Nackt" Artist="TakaTuka" Genre="Tekno" Kind="3" Size="14094336" TotalTime="353" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="162.999863" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="320" SampleRate="0" PlayCount="2" LastPlayed="1970-01-01" Rating="204" Tonality="Gb" Location="file://localhost/Users/DJ/TakaTuka%20-%20Ich%20Bin%20Nackt.mp3">
+      <POSITION_MARK Type="0" Start="0.419015139" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.419015139" Num="0"/>
+      <POSITION_MARK Type="4" Start="4.83619678" End="7.78098453" Num="-1"/>
+      <POSITION_MARK Type="4" Start="4.83619678" End="7.78098453" Num="1"/>
+      <POSITION_MARK Type="4" Start="29.8668927" End="32.8116805" Num="-1"/>
+      <POSITION_MARK Type="4" Start="29.8668927" End="32.8116805" Num="2"/>
+      <POSITION_MARK Type="4" Start="231.584854" End="234.529642" Num="-1"/>
+      <POSITION_MARK Type="4" Start="331.707638" End="334.652426" Num="-1"/>
+    </TRACK>
+    <TRACK TrackID="3178" Name="Take the Tram" Artist="Bad Girlz" Genre="Acid" Kind="3" Size="9363456" TotalTime="391" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="125.000031" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="192" SampleRate="0" PlayCount="5" LastPlayed="1970-01-01" Rating="153" Tonality="G" Location="file://localhost/Users/DJ/Bad%20Girlz%20-%20Take%20the%20Tram.mp3">
+      <POSITION_MARK Type="0" Start="0.574254513" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.574254513" Num="0"/>
+      <POSITION_MARK Type="4" Start="8.25425264" End="12.0942517" Num="-1"/>
+      <POSITION_MARK Type="4" Start="8.25425264" End="12.0942517" Num="1"/>
+      <POSITION_MARK Type="4" Start="33.2142465" End="37.0542456" Num="-1"/>
+      <POSITION_MARK Type="4" Start="33.2142465" End="37.0542456" Num="2"/>
+      <POSITION_MARK Type="4" Start="286.654185" End="290.494184" Num="-1"/>
+      <POSITION_MARK Type="4" Start="352.894168" End="356.734168" Num="-1"/>
+    </TRACK>
+    <TRACK TrackID="3174" Name="Boots" Artist="Bad Boombox, MC Yung Lil" Genre="Trance" Kind="3" Size="4206592" TotalTime="261" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="147.999908" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="128" SampleRate="0" PlayCount="6" LastPlayed="1970-01-01" Rating="204" Tonality="Gm" Location="file://localhost/Users/DJ/Bad%20Boombox%2C%20MC%20Yung%20Lil%20-%20Boots.mp3">
+      <POSITION_MARK Type="0" Start="0.216148958" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.216148958" Num="0"/>
+      <POSITION_MARK Type="4" Start="0.216148958" End="6.70263946" Num="-1"/>
+      <POSITION_MARK Type="4" Start="0.216148958" End="6.70263946" Num="1"/>
+      <POSITION_MARK Type="0" Start="26.162111" Num="-1"/>
+      <POSITION_MARK Type="0" Start="26.162111" Num="2"/>
+      <POSITION_MARK Type="4" Start="251.16225" End="257.648741" Num="-1"/>
+    </TRACK>
+    <TRACK TrackID="3176" Name="La Maldita Bulla" Artist="Mani Malon" Genre="Reggaeton" Kind="3" Size="1355776" TotalTime="84" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="124.000465" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="128" SampleRate="0" PlayCount="3" LastPlayed="1970-01-01" Rating="102" Tonality="Ebm" Location="file://localhost/Users/DJ/Mani%20Malon%20-%20La%20Maldita%20Bulla.mp3">
+      <POSITION_MARK Type="0" Start="0.118340284" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.118340284" Num="0"/>
+      <POSITION_MARK Type="4" Start="13.6666765" End="21.408583" Num="-1"/>
+      <POSITION_MARK Type="4" Start="13.6666765" End="21.408583" Num="1"/>
+      <POSITION_MARK Type="4" Start="69.311629" End="73.1825822" Num="-1"/>
+      <POSITION_MARK Type="4" Start="69.311629" End="73.1825822" Num="2"/>
+    </TRACK>
+    <TRACK TrackID="3175" Name="The M.E.L.L.O." Artist="Bass Bumpers" Genre="Trance" Kind="3" Size="3620864" TotalTime="227" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="124.96727" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="128" SampleRate="0" Comments="1 m&#233;lodie / 8 basses+acid+voix" PlayCount="9" LastPlayed="1970-01-01" Rating="153" Tonality="Dm" Location="file://localhost/Users/DJ/Bass%20Bumpers%20-%20The%20M.E.L.L.O..mp3">
+      <POSITION_MARK Type="0" Start="0.618782878" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.618782878" Num="0"/>
+      <POSITION_MARK Type="4" Start="4.45978861" End="12.1418001" Num="-1"/>
+      <POSITION_MARK Type="4" Start="4.45978861" End="12.1418001" Num="1"/>
+      <POSITION_MARK Type="4" Start="206.11259" End="213.794601" Num="-1"/>
+      <POSITION_MARK Type="4" Start="206.11259" End="213.794601" Num="2"/>
+    </TRACK>
+    <TRACK TrackID="3179" Name="Other Side" Artist="Azzecca" Genre="Tropical" Kind="3" Size="5869568" TotalTime="245" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="125.001282" DateModified="1970-01-01" DateAdded="2023-06-29" BitRate="192" SampleRate="0" PlayCount="4" LastPlayed="2023-06-29" Rating="204" Tonality="Em" Location="file://localhost/Users/DJ/Azzecca%20-%20Other%20Side.mp3">
+      <TEMPO Inizio="0.088570669" Bpm="125.001282" Battito="1"/>
+      <POSITION_MARK Type="0" Start="0.088570669" Num="-1"/>
+      <POSITION_MARK Type="0" Start="0.088570669" Num="0"/>
+      <POSITION_MARK Type="4" Start="0.088570669" End="3.92853129" Num="-1"/>
+      <POSITION_MARK Type="4" Start="0.088570669" End="3.92853129" Num="1"/>
+      <POSITION_MARK Type="4" Start="57.6879801" End="61.5279407" Num="-1"/>
+      <POSITION_MARK Type="4" Start="57.6879801" End="61.5279407" Num="2"/>
+      <POSITION_MARK Type="4" Start="172.886799" End="176.726759" Num="-1"/>
+      <POSITION_MARK Type="4" Start="218.966326" End="220.886307" Num="-1"/>
+    </TRACK>
+  </COLLECTION>
+</DJ_PLAYLISTS>
