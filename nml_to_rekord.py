@@ -70,7 +70,7 @@ def convert_nml_to_xml(nml_file, xml_file):
 
     # Process each track
     for entry in entries:
-        if get_element(entry, "PRIMARYKEY"):
+        if get_element(entry, "PRIMARYKEY") is not None:
             continue
 
         track_id = f"{track_nb:04d}" # get_attribute(entry, "AUDIO_ID")
@@ -115,13 +115,19 @@ def convert_nml_to_xml(nml_file, xml_file):
         i = 1
         for cue in entry.findall("CUE_V2"):
             cue_type = get_attribute(cue, "TYPE")
-            start = get_attribute(cue, "START")
-            end = get_attribute(cue, "LEN")
+            start = float(get_attribute(cue, "START")) / 100
+            length = get_attribute(cue, "LEN")
+
+            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}")
+
+            if length:
+                end = start + (float(length) / 100)
+                hot_cue.set("End", f"{end}")
 
             # num = get_attribute(cue, "HOTCUE")
             # before num = "-1" ou num
+            # cue type 0 => no END
 
-            position_mark = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Start=start, End=end, Num=f"{i}")
             i += 1
 
     tree = ET.ElementTree(rekordbox)
@@ -136,7 +142,7 @@ if __name__ == "__main__":
         if not exists(nml_file):
             print("Usage: python nml_to_rekord.py playlist.nml")
 
-        rekordbox_file = f"{nml_file.split('.')[:-1]}.rekordbox.xml"
+        rekordbox_file = f"{''.join(nml_file.split('.')[:-1])}.rekordbox.xml"
         open(rekordbox_file, "w").close()
 
         convert_nml_to_xml(nml_file, rekordbox_file)
