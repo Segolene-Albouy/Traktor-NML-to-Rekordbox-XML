@@ -1,6 +1,6 @@
 # Traktor-NML-to-Rekordbox-XML
 
-Python script to convert your Traktor playlists to Rekordbox XML (with Hot Cues and Loops)
+Python script to convert your Traktor playlists to [Rekordbox XML](https://cdn.rekordbox.com/files/20200410160904/xml_format_list.pdf) (with Hot Cues and Loops)
 
 ## How to
 
@@ -10,3 +10,6 @@ Python script to convert your Traktor playlists to Rekordbox XML (with Hot Cues 
 4. Preferences > Advanced > Database > rekorbox xml > Imported Library > Select `outputed_playlist.rekordbox.xml`
 5. In the sidebar of Rekordbox should appear a `rekordbox xml` section > All tracks
 6. Tada!
+
+## Links
+[Traktor NML utils library](https://pypi.org/project/traktor-nml-utils/)
