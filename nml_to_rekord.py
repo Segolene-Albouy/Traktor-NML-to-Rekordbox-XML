@@ -24,7 +24,7 @@ def get_location_path(location):
     if location is not None:
         dir_path = location.get("DIR").replace("/:","/")
         file_name = location.get("FILE")
-        return f"file://localhost/{dir_path}{file_name}".replace(" ", "%20")
+        return f"file://localhost{dir_path}{file_name}".replace(" ", "%20")
     return ""
 
 def convert_tonality(musical_key):
@@ -63,7 +63,6 @@ def convert_nml_to_xml(nml_file, xml_file):
     entries = root.findall(".//ENTRY")
 
     rekordbox = ET.Element("DJ_PLAYLISTS", Version="1.0.0")
-    product = ET.SubElement(rekordbox, "PRODUCT", Name="Cross DJ Free", Version="3.4.0 (64bits)", Company="MixVibes") # DELETE
     collection = ET.SubElement(rekordbox, "COLLECTION", Entries=str(len(entries)))
 
     track_nb = 1
@@ -80,13 +79,13 @@ def convert_nml_to_xml(nml_file, xml_file):
 
         album = get_attribute(get_element(entry, "ALBUM"), "TITLE")
         key = convert_tonality(get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE"))
-        bpm = get_attribute(get_element(entry, "TEMPO"), "BPM") # TODO round
+        bpm = float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
 
         info = get_element(entry, "INFO")
         genre = get_attribute(info, "GENRE")
         playtime = get_attribute(info, "PLAYTIME")
         playcount = get_attribute(info, "PLAYCOUNT")
-        bitrate = get_attribute(info, "BITRATE")
+        bitrate = float(get_attribute(info, "BITRATE")) / 1000
         import_date = format_date(get_attribute(info, "IMPORT_DATE"))
         last_played = format_date(get_attribute(info, "LAST_PLAYED"))
         ranking = get_attribute(info, "RANKING")
@@ -104,31 +103,39 @@ def convert_nml_to_xml(nml_file, xml_file):
             TrackID=track_id, Name=title, Artist=artist, 
             Album=album, Genre=genre, Kind=kind, Size=size, 
             TotalTime=playtime, DiscNumber="0", TrackNumber=f"{track_nb}", 
-            Year=creation_date, AverageBpm=bpm, BitRate=bitrate,
+            Year=creation_date, AverageBpm=f"{bpm}", BitRate=f"{bitrate}",
             DateModified=modif_date, DateAdded=import_date, 
             SampleRate="0", PlayCount=playcount, LastPlayed=last_played,
             Rating=ranking, Tonality=key, Location=location)
 
-        # TODO: see if inizio must be set
-        tempo = ET.SubElement(track, "TEMPO", Inizio="0", Bpm=bpm, Battito="1")
-
-        i = 1
+        i = 0
+        inizio = None
         for cue in entry.findall("CUE_V2"):
-            cue_type = get_attribute(cue, "TYPE")
-            start = float(get_attribute(cue, "START")) / 100
+            cue_type = get_attribute(cue, "TYPE") # type = 0 => autoGrid et hotcues / 4 = loop
+            cue_name = get_attribute(cue, "NAME")
+            start = float(get_attribute(cue, "START")) / 1000
             length = get_attribute(cue, "LEN")
 
+            if cue_name == "AutoGrid":
+                inizio = start
+                cue_type = "0"
+            
             hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}")
+            # hot_cue_0 is for cues to be indexed
+            hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"-1", Start=f"{start}")
 
-            if length:
-                end = start + (float(length) / 100)
+            if float(length) != 0:
+                end = start + (float(length) / 1000)
                 hot_cue.set("End", f"{end}")
-
-            # num = get_attribute(cue, "HOTCUE")
-            # before num = "-1" ou num
-            # cue type 0 => no END
+                hot_cue_0.set("End", f"{end}")
+                hot_cue.set("Type", "4")
+                hot_cue_0.set("Type", "4")
+                cue_type = "0"
 
             i += 1
+
+        if inizio is not None:
+            tempo = ET.SubElement(track, "TEMPO", Inizio=f"{inizio}", Bpm=f"{round(bpm, 2)}", Battito="1")
 
     tree = ET.ElementTree(rekordbox)
     tree.write(xml_file, encoding="utf-8", xml_declaration=True)
