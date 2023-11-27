@@ -120,7 +120,7 @@ def convert_nml_to_xml(nml_file, xml_file):
             Year=creation_date, AverageBpm=f"{bpm}", BitRate=f"{bitrate}",
             DateModified=modif_date, DateAdded=import_date, 
             SampleRate="0", PlayCount=playcount, LastPlayed=last_played,
-            Rating=ranking, Tonality=key, Location=location, Color=color)
+            Rating=ranking, Tonality=key, Location=location, Colour=color)
 
         i = 0
         inizio = None
