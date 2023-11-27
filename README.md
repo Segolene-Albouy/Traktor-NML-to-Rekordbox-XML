@@ -13,3 +13,4 @@ Python script to convert your Traktor playlists to [Rekordbox XML](https://cdn.r
 
 ## Links
 [Traktor NML utils library](https://pypi.org/project/traktor-nml-utils/)
+[Rekordbox XML schema](https://cdn.rekordbox.com/files/20200410160904/xml_format_list.pdf)

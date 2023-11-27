@@ -24,8 +24,21 @@ def get_location_path(location):
     if location is not None:
         dir_path = location.get("DIR").replace("/:","/")
         file_name = location.get("FILE")
-        return f"file://localhost{dir_path}{file_name}".replace(" ", "%20")
+        windows_prefix = "" if dir_path.startswith("/Users") else "/D:"
+        return f"file://localhost{windows_prefix}{dir_path}{file_name}".replace(" ", "%20")
     return ""
+
+def get_color(color_nb):
+    color_nb_to_rgb = {
+        "1": "0xFF0000", # Red
+        "2": "0xFFA500", # Orange
+        "3": "0xFFFF00", # Yellow
+        "4": "0x00FF00", # Green
+        "5": "0x0000FF", # Blue
+        "6": "0xFF007F", # Rose
+        "7": "0x660099", # Violet
+    }
+    return color_nb_to_rgb.get(color_nb, "")
 
 def convert_tonality(musical_key):
     musical_key_to_tonality = {
@@ -72,7 +85,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         if get_element(entry, "PRIMARYKEY") is not None:
             continue
 
-        track_id = f"{track_nb:04d}" # get_attribute(entry, "AUDIO_ID")
+        track_id = f"{track_nb:04d}"
         track_nb += 1
         title = get_attribute(entry, "TITLE")
         artist = get_attribute(entry, "ARTIST")
@@ -82,6 +95,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         bpm = float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
 
         info = get_element(entry, "INFO")
+        color = get_color(get_attribute(info, "COLOR"))
         genre = get_attribute(info, "GENRE")
         playtime = get_attribute(info, "PLAYTIME")
         playcount = get_attribute(info, "PLAYCOUNT")
@@ -106,7 +120,7 @@ def convert_nml_to_xml(nml_file, xml_file):
             Year=creation_date, AverageBpm=f"{bpm}", BitRate=f"{bitrate}",
             DateModified=modif_date, DateAdded=import_date, 
             SampleRate="0", PlayCount=playcount, LastPlayed=last_played,
-            Rating=ranking, Tonality=key, Location=location)
+            Rating=ranking, Tonality=key, Location=location, Color=color)
 
         i = 0
         inizio = None
@@ -120,9 +134,9 @@ def convert_nml_to_xml(nml_file, xml_file):
                 inizio = start
                 cue_type = "0"
             
-            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}")
+            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}", Name=cue_name)
             # hot_cue_0 is for cues to be indexed
-            hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"-1", Start=f"{start}")
+            hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"-1", Start=f"{start}", Name=cue_name)
 
             if float(length) != 0:
                 end = start + (float(length) / 1000)
