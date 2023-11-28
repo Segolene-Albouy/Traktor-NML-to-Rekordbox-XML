@@ -25,7 +25,8 @@ def get_location_path(location):
         dir_path = location.get("DIR").replace("/:","/")
         file_name = location.get("FILE")
         volume = get_attribute(location, "VOLUME")
-        return f"file://localhost/{volume}{dir_path}{file_name}".replace(" ", "%20")
+        disk = f"/{volume}" if not "Mac" in volume else ""
+        return f"file://localhost{disk}{dir_path}{file_name}".replace(" ", "%20")
     return ""
 
 def get_color(color_nb):
@@ -39,6 +40,25 @@ def get_color(color_nb):
         "7": "0x660099", # Violet
     }
     return color_nb_to_rgb.get(color_nb, "")
+
+def type_to_color(cue_type):
+    type_to_rgb = {
+        "0": {"R":"48", "G":"90", "B":"255"}, # Hotcue => Blue
+        "1": {"R":"230", "G":"40", "B":"40"}, # Fade in => Red
+        "2": {"R":"16", "G":"177", "B":"118"}, # Fade out => Green
+        "3": {"R":"0", "G":"224", "B":"225"}, # Load => Cyan
+        "4": {"R":"224", "G":"100", "B":"27"}, # Loop => Orange
+        "5": {"R":"165", "G":"225", "B":"22"}, # Grid => Lime
+    }
+    return type_to_rgb.get(cue_type, "")
+
+def set_color_cue(cue, ctype):
+    rgb = type_to_color(ctype)
+    if rgb:
+        cue.set("Red", rgb["R"])
+        cue.set("Green", rgb["G"])
+        cue.set("Blue", rgb["B"])
+    return cue
 
 def convert_tonality(musical_key):
     musical_key_to_tonality = {
@@ -137,6 +157,8 @@ def convert_nml_to_xml(nml_file, xml_file):
             hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}", Name=cue_name)
             # hot_cue_0 is for cues to be indexed
             hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"-1", Start=f"{start}", Name=cue_name)
+
+            set_color_cue(hot_cue, cue_type)
 
             if float(length) != 0:
                 end = start + (float(length) / 1000)
