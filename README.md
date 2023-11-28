@@ -2,18 +2,18 @@
 
 Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
 
-- Hot Cues (with names)
-- Saved loops (with names)
-- Track color
-- Playtime
-- Genre / Artist / Title / Music tonality / etc.
+- [x] Hot Cues (with names)
+- [x] Saved loops (with names)
+- [x] Track color
+- [x] Playtime
+- [x] Genre / Artist / Title / Music tonality / etc.
 
 ### To be added
 
-- Pad order of Hots Cues and Loops
-- Playlist tree-structure
-- Web interface to load file
-- Rekordbox XML => Traktor NML 
+- [ ] Pad order of Hots Cues and Loops
+- [ ] Playlist tree-structure
+- [ ] Web interface to load file
+- [ ] Rekordbox XML => Traktor NML 
 
 ## How to
 
@@ -27,3 +27,4 @@ Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
 ## Links
 - [Traktor NML utils library](https://pypi.org/project/traktor-nml-utils/)
 - [Rekordbox XML schema](https://cdn.rekordbox.com/files/20200410160904/xml_format_list.pdf)
+- [TraktorBox library](https://github.com/nonodesbois42/TraktorBox/tree/main)
