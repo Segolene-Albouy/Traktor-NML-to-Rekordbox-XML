@@ -24,8 +24,8 @@ def get_location_path(location):
     if location is not None:
         dir_path = location.get("DIR").replace("/:","/")
         file_name = location.get("FILE")
-        windows_prefix = "" if dir_path.startswith("/Users") else "/D:"
-        return f"file://localhost{windows_prefix}{dir_path}{file_name}".replace(" ", "%20")
+        volume = get_attribute(location, "VOLUME")
+        return f"file://localhost/{volume}{dir_path}{file_name}".replace(" ", "%20")
     return ""
 
 def get_color(color_nb):
@@ -149,7 +149,7 @@ def convert_nml_to_xml(nml_file, xml_file):
             i += 1
 
         if inizio is not None:
-            tempo = ET.SubElement(track, "TEMPO", Inizio=f"{inizio}", Bpm=f"{round(bpm, 2)}", Battito="1")
+            ET.SubElement(track, "TEMPO", Inizio=f"{inizio}", Bpm=f"{round(bpm, 2)}", Battito="1")
 
     tree = ET.ElementTree(rekordbox)
     tree.write(xml_file, encoding="utf-8", xml_declaration=True)
