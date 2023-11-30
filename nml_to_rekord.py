@@ -29,7 +29,7 @@ def get_location_path(location):
         return f"file://localhost{disk}{dir_path}{file_name}".replace(" ", "%20")
     return ""
 
-def get_color(color_nb):
+def get_track_color(color_nb):
     color_nb_to_rgb = {
         "1": "0xFF0000", # Red
         "2": "0xFFA500", # Orange
@@ -41,24 +41,64 @@ def get_color(color_nb):
     }
     return color_nb_to_rgb.get(color_nb, "")
 
-def type_to_color(cue_type):
-    type_to_rgb = {
-        "0": {"R":"48", "G":"90", "B":"255"}, # Hotcue => Blue
-        "1": {"R":"230", "G":"40", "B":"40"}, # Fade in => Red
-        "2": {"R":"16", "G":"177", "B":"118"}, # Fade out => Green
-        "3": {"R":"0", "G":"224", "B":"225"}, # Load => Cyan
-        "4": {"R":"224", "G":"100", "B":"27"}, # Loop => Orange
-        "5": {"R":"165", "G":"225", "B":"22"}, # Grid => Lime
+def get_cue_color(ctype):
+    color = map_to_color(ctype)
+    rekordbox_colors = {
+        "rose": {"R":"222", "G":"68", "B":"207"},
+        "magenta": {"R":"180", "G":"50", "B":"255"},
+        "violet": {"R":"170", "G":"114", "B":"255"},
+        "mauve": {"R":"100", "G":"115", "B":"255"},
+        "blue": {"R":"48", "G":"90", "B":"255"},
+        "sky": {"R":"80", "G":"180", "B":"255"},
+        "cyan": {"R":"0", "G":"224", "B":"225"},
+        "turquoise": {"R":"31", "G":"163", "B":"146"},
+        "celadon": {"R":"16", "G":"177", "B":"118"},
+        "green": {"R":"40", "G":"226", "B":"20"},
+        "lime": {"R":"165", "G":"225", "B":"22"},
+        "kaki": {"R":"180", "G":"190", "B":"4"},
+        "yellow": {"R":"195", "G":"175", "B":"4"},
+        "orange": {"R":"224", "G":"100", "B":"27"},
+        "red": {"R":"230", "G":"40", "B":"40"},
+        "pink": {"R":"255", "G":"18", "B":"123"},
     }
-    return type_to_rgb.get(cue_type, "")
+    return rekordbox_colors.get(color, "")
 
-def set_color_cue(cue, ctype):
-    rgb = type_to_color(ctype)
+def map_to_color(ctype):
+    ctype = str(ctype).lower().replace(" ", "").replace("-", "")
+    color_map = {
+        "0": "blue", # Hotcue
+        "1": "red", # Fade in
+        "2": "green", # Fade out
+        "3": "cyan", # Load
+        "4": "lime", # Grid
+        "5": "orange", # Loop
+        "start": "yellow",
+        "intro": "yellow",
+        "break": "turquoise",
+        "bridge": "turquoise",
+        "buildup": "celadon",
+        "drop": "pink",
+        "outro": "violet",
+        "cue1": "rose",
+        "cue2": "magenta",
+        "cue3": "mauve",
+        "cue4": "sky",
+        "AutoGrid": "kaki",
+    }
+    return color_map.get(ctype, "")
+
+def set_cue_color(cue, ctype):
+    rgb = get_cue_color(ctype)
     if rgb:
         cue.set("Red", rgb["R"])
         cue.set("Green", rgb["G"])
         cue.set("Blue", rgb["B"])
     return cue
+
+def convert_cue_type(traktor_ctype):
+    # Rekordbox: Cue = "0", Loop = "4" (Fade-In "1", Fade-Out "2", Load "3" DON'T WORK)
+    # Traktor: Cue = "0", Fade-In = "1", Fade-Out = "2", Load = "3", AutoGrid / Grid = "4", Loop = "5"
+    return "4" if traktor_ctype == "5" else "0"
 
 def convert_tonality(musical_key):
     musical_key_to_tonality = {
@@ -115,7 +155,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         bpm = float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
 
         info = get_element(entry, "INFO")
-        color = get_color(get_attribute(info, "COLOR"))
+        color = get_track_color(get_attribute(info, "COLOR"))
         genre = get_attribute(info, "GENRE")
         playtime = get_attribute(info, "PLAYTIME")
         playcount = get_attribute(info, "PLAYCOUNT")
@@ -149,25 +189,23 @@ def convert_nml_to_xml(nml_file, xml_file):
             cue_name = get_attribute(cue, "NAME")
             start = float(get_attribute(cue, "START")) / 1000
             length = get_attribute(cue, "LEN")
+            no = get_attribute(cue, "HOTCUE")
 
             if cue_name == "AutoGrid":
                 inizio = start
-                cue_type = "0"
             
-            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"{i}", Start=f"{start}", Name=cue_name)
-            # hot_cue_0 is for cues to be indexed
-            hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num=f"-1", Start=f"{start}", Name=cue_name)
+            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=convert_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
+            # {no if no != "-1" else i}
+            set_cue_color(hot_cue, cue_name if cue_name != "n.n." else cue_type)
 
-            set_color_cue(hot_cue, cue_type)
+            # Num="-1" allows the cue to be indexed but not displayed in the pad / useful for grid 
+            # hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num="-1", Start=f"{start}", Name=cue_name)
+            # set_cue_color(hot_cue_0, cue_name if cue_name != "n.n." else cue_type)
 
             if float(length) != 0:
                 end = start + (float(length) / 1000)
                 hot_cue.set("End", f"{end}")
-                hot_cue_0.set("End", f"{end}")
-                hot_cue.set("Type", "4")
-                hot_cue_0.set("Type", "4")
-                cue_type = "0"
-
+                # hot_cue_0.set("End", f"{end}")
             i += 1
 
         if inizio is not None:
