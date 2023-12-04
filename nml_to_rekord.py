@@ -44,22 +44,25 @@ def get_track_color(color_nb):
 def get_cue_color(ctype):
     color = map_to_color(ctype)
     rekordbox_colors = {
-        "rose": {"R":"222", "G":"68", "B":"207"},
-        "magenta": {"R":"180", "G":"50", "B":"255"},
-        "violet": {"R":"170", "G":"114", "B":"255"},
-        "mauve": {"R":"100", "G":"115", "B":"255"},
-        "blue": {"R":"48", "G":"90", "B":"255"},
-        "sky": {"R":"80", "G":"180", "B":"255"},
-        "cyan": {"R":"0", "G":"224", "B":"225"},
-        "turquoise": {"R":"31", "G":"163", "B":"146"},
-        "celadon": {"R":"16", "G":"177", "B":"118"},
-        "green": {"R":"40", "G":"226", "B":"20"},
-        "lime": {"R":"165", "G":"225", "B":"22"},
-        "kaki": {"R":"180", "G":"190", "B":"4"},
-        "yellow": {"R":"195", "G":"175", "B":"4"},
-        "orange": {"R":"224", "G":"100", "B":"27"},
-        "red": {"R":"230", "G":"40", "B":"40"},
-        "pink": {"R":"255", "G":"18", "B":"123"},
+        "pink": {"R":"222", "G":"68", "B":"207"},        # (1)
+        "orchidea": {"R":"180", "G":"50", "B":"255"},    # (2)
+        "violet": {"R":"170", "G":"114", "B":"255"},     # (3)
+        "mauve": {"R":"100", "G":"115", "B":"255"},      # (4)
+        
+        "blue": {"R":"48", "G":"90", "B":"255"},         # (5)
+        "sky": {"R":"80", "G":"180", "B":"255"},         # (6)
+        "cyan": {"R":"0", "G":"224", "B":"255"},         # (7)
+        "turquoise": {"R":"31", "G":"163", "B":"146"},   # (8)
+        
+        "celadon": {"R":"16", "G":"177", "B":"118"},     # (9)
+        "green": {"R":"40", "G":"226", "B":"20"},        # (10)
+        "lime": {"R":"165", "G":"225", "B":"22"},        # (11)
+        "kaki": {"R":"180", "G":"190", "B":"4"},         # (12)
+        
+        "yellow": {"R":"195", "G":"175", "B":"4"},       # (13)
+        "orange": {"R":"224", "G":"100", "B":"27"},      # (14)
+        "red": {"R":"230", "G":"40", "B":"40"},          # (15)
+        "magenta": {"R":"255", "G":"18", "B":"123"},     # (16)
     }
     return rekordbox_colors.get(color, "")
 
@@ -161,6 +164,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         playcount = get_attribute(info, "PLAYCOUNT")
         bitrate = float(get_attribute(info, "BITRATE")) / 1000
         import_date = format_date(get_attribute(info, "IMPORT_DATE"))
+        modif_date = format_date(get_attribute(entry, "MODIFIED_DATE"))
         last_played = format_date(get_attribute(info, "LAST_PLAYED"))
         ranking = get_attribute(info, "RANKING")
 
