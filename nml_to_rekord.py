@@ -88,9 +88,12 @@ def map_to_color(ctype):
         "cue4": "sky",
         "AutoGrid": "kaki",
     }
-    return color_map.get(ctype, "")
+    return color_map.get(ctype, "blue")
 
-def set_cue_color(cue, ctype):
+def set_cue_color(cue, ctype, cname):
+    if ctype == "0" and cname != "n.n.":
+        ctype = cname
+
     rgb = get_cue_color(ctype)
     if rgb:
         cue.set("Red", rgb["R"])
@@ -203,7 +206,7 @@ def convert_nml_to_xml(nml_file, xml_file):
 
             # Num="-1" allows the cue to be indexed but not displayed in the pad / useful for grid 
             # hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num="-1", Start=f"{start}", Name=cue_name)
-            # set_cue_color(hot_cue_0, cue_name if cue_name != "n.n." else cue_type)
+            # set_cue_color(hot_cue_0, cue_type, cue_name)
 
             if float(length) != 0:
                 end = start + (float(length) / 1000)
