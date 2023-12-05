@@ -170,7 +170,6 @@ def convert_nml_to_xml(nml_file, xml_file):
 
         location = get_location_path(get_element(entry, "LOCATION"))
 
-        modif_date = "1970-01-01"
         kind = "3"
         creation_date = "0"
         size = "0"
@@ -200,7 +199,7 @@ def convert_nml_to_xml(nml_file, xml_file):
             
             hot_cue = ET.SubElement(track, "POSITION_MARK", Type=convert_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
             # {no if no != "-1" else i}
-            set_cue_color(hot_cue, cue_name if cue_name != "n.n." else cue_type)
+            set_cue_color(hot_cue, cue_type, cue_name)
 
             # Num="-1" allows the cue to be indexed but not displayed in the pad / useful for grid 
             # hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num="-1", Start=f"{start}", Name=cue_name)
