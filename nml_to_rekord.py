@@ -2,29 +2,9 @@ import xml.etree.ElementTree as ET
 import sys
 from os.path import exists
 
-from consts import RB_COLORS, CUE_COLORS
 from utils import get_attribute, format_date, get_element, get_tonalikey, get_track_color, get_cue_type, set_conversion, \
-    get_location
+    get_location, set_cue_color
 
-
-def get_cue_color(ctype):
-    color = map_to_color(ctype)
-    return RB_COLORS.get(color, "")
-
-def map_to_color(ctype):
-    ctype = str(ctype).lower().replace(" ", "").replace("-", "")
-    return CUE_COLORS.get(ctype, "blue")
-
-def set_cue_color(cue, ctype, cname):
-    if ctype == "0" and cname != "n.n.":
-        ctype = cname
-
-    rgb = get_cue_color(ctype)
-    if rgb:
-        cue.set("Red", rgb["R"])
-        cue.set("Green", rgb["G"])
-        cue.set("Blue", rgb["B"])
-    return cue
 
 def convert_nml_to_xml(nml_file, xml_file):
     tree = ET.parse(nml_file)
@@ -93,11 +73,11 @@ def convert_nml_to_xml(nml_file, xml_file):
             
             hot_cue = ET.SubElement(track, "POSITION_MARK", Type=get_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
             # {no if no != "-1" else i}
-            set_cue_color(hot_cue, cue_type, cue_name)
+            set_cue_color(hot_cue, ctype=cue_type, cname=cue_name)
 
             # Num="-1" allows the cue to be indexed but not displayed in the pad / useful for grid 
             # hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num="-1", Start=f"{start}", Name=cue_name)
-            # set_cue_color(hot_cue_0, cue_type, cue_name)
+            # set_cue_color(hot_cue_0, ctype=cue_type, cname=cue_name)
 
             if float(length) != 0:
                 end = start + (float(length) / 1000)
@@ -112,7 +92,7 @@ def convert_nml_to_xml(nml_file, xml_file):
     tree.write(xml_file, encoding="utf-8", xml_declaration=True)
 
 if __name__ == "__main__":
-    set_conversion("rekordbox", "traktor")
+    set_conversion("traktor", "rekordbox")
     if len(sys.argv) < 2:
         print("Usage: python nml_to_rekord.py playlist.nml")
     else:

@@ -41,7 +41,7 @@ TONALITY_MAP = {
     "Bm": "23",
 }
 
-RB_COLORS = {
+COLOR_NAME_TO_RGB = {
     "pink": {"R": "222", "G": "68", "B": "207"},  # (1)
     "orchidea": {"R": "180", "G": "50", "B": "255"},  # (2)
     "violet": {"R": "170", "G": "114", "B": "255"},  # (3)
@@ -61,6 +61,29 @@ RB_COLORS = {
     "orange": {"R": "224", "G": "100", "B": "27"},  # (14)
     "red": {"R": "230", "G": "40", "B": "40"},  # (15)
     "magenta": {"R": "255", "G": "18", "B": "123"},  # (16)
+}
+
+RGB_TO_CUE_TYPE = {
+    # Format: "R-G-B": "type"
+    "222-68-207": "0",  # Pink - Hotcue
+    "180-50-255": "0",  # Orchidea - Hotcue
+    "170-114-255": "0",  # Violet - Hotcue
+    "100-115-255": "0",  # Mauve - Hotcue
+
+    "48-90-255": "0",  # Blue - Hotcue
+    "80-180-255": "0",  # Sky - Hotcue
+    "0-224-255": "3",  # Cyan - Load
+    "31-163-146": "3",  # Turquoise - Load
+
+    "16-177-118": "4",  # Celadon - Grid
+    "40-226-20": "5",  # Green - Loop
+    "165-225-22": "4",  # Lime - Grid
+    "180-190-4": "4",  # Kaki - Grid
+
+    "195-175-4": "0",  # Yellow - Hotcue
+    "224-100-27": "5",  # Orange - Loop
+    "230-40-40": "1",  # Red - Fade in
+    "255-18-123": "2"  # Magenta - Fade out
 }
 
 CUE_COLORS = {

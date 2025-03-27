@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-from consts import DATE_FORMAT, COLOR_MAP, TONALITY_MAP
+from consts import DATE_FORMAT, COLOR_MAP, TONALITY_MAP, COLOR_NAME_TO_RGB, CUE_COLORS, RGB_TO_CUE_TYPE
 
 # VARIABLES TO BE DEFINED BY SPECIFIC SCRIPTS
 original = None
@@ -79,28 +79,28 @@ def get_cue_type(ctype):
     return "0"
 
 
-def _convert_tonality_to_key(tonality):
+def _get_traktor_key(tonality):
     """Convert Rekordbox tonality to Traktor musical key."""
     return TONALITY_MAP.get(tonality, "")
 
 
-def _convert_key_to_tonality(musical_key):
+def _get_rekordbox_tonality(musical_key):
     """Convert Traktor musical key to Rekordbox tonality."""
     for ton, key in TONALITY_MAP.items():
         if key == musical_key:
-            return key
+            return ton
     return ""
 
 
 def get_tonalikey(tonalikey):
     if target == "traktor":
-        return _convert_key_to_tonality(tonalikey)
+        return _get_rekordbox_tonality(tonalikey)
     elif target == "rekordbox":
-        return _convert_tonality_to_key(tonalikey)
+        return _get_traktor_key(tonalikey)
     return ""
 
 
-def _parse_location_path(location):
+def _get_traktor_location(location):
     """Parse Rekordbox location to get directory, file and volume."""
     if location and location.startswith("file://localhost"):
         # Remove prefix and replace URL encoding
@@ -137,7 +137,7 @@ def _parse_location_path(location):
     }
 
 
-def _get_location_path(location):
+def _get_rekordbox_location(location):
     """Get Rekordbox location path from directory, file and volume."""
     if location is not None:
         dir_path = location.get("DIR").replace("/:","/")
@@ -150,37 +150,72 @@ def _get_location_path(location):
 
 def get_location(location):
     if target == "traktor":
-        return _parse_location_path(location)
+        return _get_traktor_location(location)
     elif target == "rekordbox":
-        return _get_location_path(location)
+        return _get_rekordbox_location(location)
     return ""
 
 
+def map_to_color(ctype):
+    ctype = str(ctype).lower().replace(" ", "").replace("-", "")
+    return CUE_COLORS.get(ctype, "blue")
+
+
+def color_distance(color1, color2):
+    r1, g1, b1 = color1
+    r2, g2, b2 = color2
+    # Calculate squared Euclidean distance
+    return (r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2
+
+
+def find_closest_color(target_rgb, color_map):
+    """Find the closest color in the color map to the target RGB."""
+    min_distance = float('inf')
+    closest_color = None
+
+    for color_key, value in color_map.items():
+        # Assume all keys are in "r-g-b" format
+        compare_rgb = tuple(map(int, color_key.split('-')))
+        distance = color_distance(target_rgb, compare_rgb)
+
+        if distance < min_distance:
+            min_distance = distance
+            closest_color = value
+
+    return closest_color
+
+
 def get_cue_color_values(r, g, b):
-    """Map RGB color values to a Traktor cue type."""
-    # This is a simplification - in practice you might want a more sophisticated mapping
-    rgb_colors = {
-        # Format: "R-G-B": "type"
-        "222-68-207": "0",  # Pink - Hotcue
-        "180-50-255": "0",  # Orchidea - Hotcue
-        "170-114-255": "0",  # Violet - Hotcue
-        "100-115-255": "0",  # Mauve - Hotcue
+    rgb_key = f"{r}-{g}-{b}"
+    if rgb_key in RGB_TO_CUE_TYPE:
+        return RGB_TO_CUE_TYPE[rgb_key]
 
-        "48-90-255": "0",  # Blue - Hotcue
-        "80-180-255": "0",  # Sky - Hotcue
-        "0-224-255": "3",  # Cyan - Load
-        "31-163-146": "3",  # Turquoise - Load
+    closest_type = find_closest_color((int(r), int(g), int(b)), RGB_TO_CUE_TYPE)
 
-        "16-177-118": "4",  # Celadon - Grid
-        "40-226-20": "5",  # Green - Loop
-        "165-225-22": "4",  # Lime - Grid
-        "180-190-4": "4",  # Kaki - Grid
+    return closest_type or "0"
 
-        "195-175-4": "0",  # Yellow - Hotcue
-        "224-100-27": "5",  # Orange - Loop
-        "230-40-40": "1",  # Red - Fade in
-        "255-18-123": "2"  # Magenta - Fade out
-    }
+def _set_traktor_cue_color(cue, r, g, b):
+    ctype = get_cue_color_values(r, g, b)
+    cue.set("Type", ctype)
+    return cue
 
-    key = f"{r}-{g}-{b}"
-    return rgb_colors.get(key, "0")  # Default to Hotcue
+def _set_rekordbox_cue_color(cue, ctype, cname):
+    if ctype == "0" and cname != "n.n.":
+        ctype = cname
+
+    color = map_to_color(ctype)
+    rgb = COLOR_NAME_TO_RGB.get(color, "")
+    if rgb:
+        cue.set("Red", rgb["R"])
+        cue.set("Green", rgb["G"])
+        cue.set("Blue", rgb["B"])
+    return cue
+
+def set_cue_color(cue, **kwargs):
+    if target == "traktor":
+        r, g, b = kwargs.get("r"), kwargs.get("g"), kwargs.get("b")
+        return _set_traktor_cue_color(cue, r, g, b)
+    elif target == "rekordbox":
+        ctype, cname = kwargs.get("ctype"), kwargs.get("cname")
+        return _set_rekordbox_cue_color(cue, ctype, cname)
+    return cue
