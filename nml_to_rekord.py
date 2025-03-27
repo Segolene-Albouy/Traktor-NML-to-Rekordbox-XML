@@ -1,94 +1,19 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime
 import sys
 from os.path import exists
 
-def get_attribute(element, attribute):
-    if element is not None and attribute in element.attrib:
-        return element.get(attribute)
-    return ""
+from consts import RB_COLORS, CUE_COLORS
+from utils import get_attribute, format_date, get_element, get_tonalikey, get_track_color, get_cue_type, set_conversion, \
+    get_location
 
-def get_element(element, sub_element):
-    try:
-        return element.find(sub_element)
-    except Exception as e:
-        return None
-
-def format_date(date):
-    try:
-        return datetime.strptime(date, "%Y/%m/%d").strftime("%Y-%m-%d")
-    except Exception:
-        return ""
-
-def get_location_path(location):
-    if location is not None:
-        dir_path = location.get("DIR").replace("/:","/")
-        file_name = location.get("FILE")
-        volume = get_attribute(location, "VOLUME")
-        disk = f"/{volume}" if not "Mac" in volume else ""
-        return f"file://localhost{disk}{dir_path}{file_name}".replace(" ", "%20")
-    return ""
-
-def get_track_color(color_nb):
-    color_nb_to_rgb = {
-        "1": "0xFF0000", # Red
-        "2": "0xFFA500", # Orange
-        "3": "0xFFFF00", # Yellow
-        "4": "0x00FF00", # Green
-        "5": "0x0000FF", # Blue
-        "6": "0xFF007F", # Rose
-        "7": "0x660099", # Violet
-    }
-    return color_nb_to_rgb.get(color_nb, "")
 
 def get_cue_color(ctype):
     color = map_to_color(ctype)
-    rekordbox_colors = {
-        "pink": {"R":"222", "G":"68", "B":"207"},        # (1)
-        "orchidea": {"R":"180", "G":"50", "B":"255"},    # (2)
-        "violet": {"R":"170", "G":"114", "B":"255"},     # (3)
-        "mauve": {"R":"100", "G":"115", "B":"255"},      # (4)
-        
-        "blue": {"R":"48", "G":"90", "B":"255"},         # (5)
-        "sky": {"R":"80", "G":"180", "B":"255"},         # (6)
-        "cyan": {"R":"0", "G":"224", "B":"255"},         # (7)
-        "turquoise": {"R":"31", "G":"163", "B":"146"},   # (8)
-        
-        "celadon": {"R":"16", "G":"177", "B":"118"},     # (9)
-        "green": {"R":"40", "G":"226", "B":"20"},        # (10)
-        "lime": {"R":"165", "G":"225", "B":"22"},        # (11)
-        "kaki": {"R":"180", "G":"190", "B":"4"},         # (12)
-        
-        "yellow": {"R":"195", "G":"175", "B":"4"},       # (13)
-        "orange": {"R":"224", "G":"100", "B":"27"},      # (14)
-        "red": {"R":"230", "G":"40", "B":"40"},          # (15)
-        "magenta": {"R":"255", "G":"18", "B":"123"},     # (16)
-    }
-    return rekordbox_colors.get(color, "")
+    return RB_COLORS.get(color, "")
 
 def map_to_color(ctype):
     ctype = str(ctype).lower().replace(" ", "").replace("-", "")
-    color_map = {
-        "0": "blue", # Hotcue
-        "1": "red", # Fade in
-        "2": "green", # Fade out
-        "3": "cyan", # Load
-        "4": "lime", # Grid
-        "5": "orange", # Loop
-        "start": "yellow",
-        "intro": "yellow",
-        "break": "turquoise",
-        "bridge": "turquoise",
-        "buildup": "celadon",
-        "drop": "pink",
-        "outro": "violet",
-        "cue1": "rose",
-        "cue2": "magenta",
-        "cue3": "mauve",
-        "cue4": "sky",
-        "AutoGrid": "kaki",
-    }
-    return color_map.get(ctype, "blue")
+    return CUE_COLORS.get(ctype, "blue")
 
 def set_cue_color(cue, ctype, cname):
     if ctype == "0" and cname != "n.n.":
@@ -100,40 +25,6 @@ def set_cue_color(cue, ctype, cname):
         cue.set("Green", rgb["G"])
         cue.set("Blue", rgb["B"])
     return cue
-
-def convert_cue_type(traktor_ctype):
-    # Rekordbox: Cue = "0", Loop = "4" (Fade-In "1", Fade-Out "2", Load "3" DON'T WORK)
-    # Traktor: Cue = "0", Fade-In = "1", Fade-Out = "2", Load = "3", AutoGrid / Grid = "4", Loop = "5"
-    return "4" if traktor_ctype == "5" else "0"
-
-def convert_tonality(musical_key):
-    musical_key_to_tonality = {
-        "0": "C",
-        "1": "Db",
-        "2": "D",
-        "3": "Eb", 
-        "4": "E",
-        "5": "F",
-        "6": "Gb",
-        "7": "G",
-        "8": "Ab",
-        "9": "A",
-        "10": "Bb",
-        "11": "B",
-        "12": "Cm",
-        "13": "Dbm",
-        "14": "Dm",
-        "15": "Ebm",
-        "16": "Em",
-        "17": "Fm",
-        "18": "Gbm",
-        "19": "Gm",
-        "20": "Abm",
-        "21": "Am",
-        "22": "Bbm",
-        "23": "Bm",
-    }
-    return musical_key_to_tonality.get(musical_key, "")
 
 def convert_nml_to_xml(nml_file, xml_file):
     tree = ET.parse(nml_file)
@@ -157,7 +48,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         artist = get_attribute(entry, "ARTIST")
 
         album = get_attribute(get_element(entry, "ALBUM"), "TITLE")
-        key = convert_tonality(get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE"))
+        key = get_tonalikey(get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE"))
         bpm = float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
 
         info = get_element(entry, "INFO")
@@ -171,7 +62,7 @@ def convert_nml_to_xml(nml_file, xml_file):
         last_played = format_date(get_attribute(info, "LAST_PLAYED"))
         ranking = get_attribute(info, "RANKING")
 
-        location = get_location_path(get_element(entry, "LOCATION"))
+        location = get_location(get_element(entry, "LOCATION"))
 
         kind = "3"
         creation_date = "0"
@@ -200,7 +91,7 @@ def convert_nml_to_xml(nml_file, xml_file):
             if cue_name == "AutoGrid":
                 inizio = start
             
-            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=convert_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
+            hot_cue = ET.SubElement(track, "POSITION_MARK", Type=get_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
             # {no if no != "-1" else i}
             set_cue_color(hot_cue, cue_type, cue_name)
 
@@ -221,6 +112,7 @@ def convert_nml_to_xml(nml_file, xml_file):
     tree.write(xml_file, encoding="utf-8", xml_declaration=True)
 
 if __name__ == "__main__":
+    set_conversion("rekordbox", "traktor")
     if len(sys.argv) < 2:
         print("Usage: python nml_to_rekord.py playlist.nml")
     else:
