@@ -1,26 +1,29 @@
-import xml.etree.ElementTree as ET
+from xml.etree.ElementTree import Element
 from datetime import datetime
+from typing import Literal
 
 from consts import DATE_FORMAT, COLOR_MAP, TONALITY_MAP, COLOR_NAME_TO_RGB, CUE_COLORS, RGB_TO_CUE_TYPE
 
-# VARIABLES TO BE DEFINED BY SPECIFIC SCRIPTS
-original = None
-target = None
+softType = Literal["traktor", "rekordbox"]
 
-def set_conversion(o, t):
+# VARIABLES TO BE DEFINED BY SPECIFIC SCRIPTS
+original: softType
+target: softType
+
+def set_conversion(o: softType, t: softType):
     global original, target
     original = o
     target = t
 
 
-def get_attribute(element, attribute):
+def get_attribute(element: Element, attribute):
     """Get an attribute from an element if it exists."""
     if element is not None and attribute in element.attrib:
         return element.get(attribute)
     return ""
 
 
-def get_element(element, sub_element):
+def get_element(element: Element, sub_element):
     """Find a sub-element from an element."""
     try:
         return element.find(sub_element)
