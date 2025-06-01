@@ -19,12 +19,19 @@ Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
 
 ## How to
 
-1. Export your playlist in Traktor in NML
+### Traktor to Rekordbox
+1. Export your playlist in Traktor in NML (Right-click on the playlist > Export Playlist > NML)
 2. `python nml_to_rekord.py <path/to/your/playlist>.nml`
 3. Open Rekordbox > Preferences > View > Layout > Tree View > Check rekordbox xml
 4. Preferences > Advanced > Database > rekordbox xml > Imported Library > Select `<outputed_playlist>.rekordbox.xml`
 5. In the sidebar of Rekordbox should appear a `rekordbox xml` section > All tracks
-6. Tada!
+6. Tada! 🎉
+
+### Rekordbox to Traktor
+1. In Rekordbox, export your collection: File > Export Collection in xml format > Pick any location
+2. `python rekord_to_nml.py <path/to/your/collection>.xml`
+3. Open Traktor > Right-click on the Playlists > Import Playlist > Choose the `<outputed_collection>.nml` file
+4. Tada! 🥳
 
 ## Links
 - [Traktor NML utils library](https://pypi.org/project/traktor-nml-utils/)
