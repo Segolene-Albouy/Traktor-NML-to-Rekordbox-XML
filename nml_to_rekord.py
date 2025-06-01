@@ -257,3 +257,5 @@ if __name__ == "__main__":
 
         converter = Traktor2Rekordbox()
         converter.convert_nml_to_xml(nml_file, rekordbox_file)
+
+        print(f"☕️ {nml_file} was converted to {rekordbox_file}!")

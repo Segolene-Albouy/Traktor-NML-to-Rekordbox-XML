@@ -8,12 +8,14 @@ Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
 - [x] Playtime
 - [x] Genre / Artist / Title / Music tonality / etc.
 - [x] Pad order of Hots Cues and Loops
+- [x] Flexible beatgrid
+- [x] Rekordbox XML <=> Traktor NML
 
 ### To be added
 
 - [ ] Playlist tree-structure
 - [ ] Web interface to load file
-- [ ] Rekordbox XML => Traktor NML 
+- [ ] Custom loop length for Traktor
 
 ## How to
 

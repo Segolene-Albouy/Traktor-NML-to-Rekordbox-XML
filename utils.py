@@ -1,3 +1,4 @@
+import urllib.parse
 from xml.etree.ElementTree import Element
 from datetime import datetime
 from typing import Literal
@@ -105,38 +106,51 @@ def get_tonalikey(tonalikey):
 
 def _get_traktor_location(location):
     """Parse Rekordbox location to get directory, file and volume."""
-    if location and location.startswith("file://localhost"):
-        # Remove prefix and replace URL encoding
-        path = location.replace("file://localhost", "").replace("%20", " ")
+    is_unix = "Users" in location
+    volume = "Macintosh HD"  # TODO fix here for Windows
 
-        # Parse path into components
-        parts = path.split("/")
-
-        # Determine volume
-        if path.startswith("/"):
-            if len(parts) > 1:
-                volume = parts[1]
-            else:
-                volume = "Macintosh HD"
-        else:
-            volume = "Macintosh HD"
-
-        # Extract filename (last component)
-        file_name = parts[-1] if parts else ""
-
-        # Build directory path in Traktor format
-        dir_parts = parts[1:-1] if path.startswith("/") else parts[:-1]
-        dir_path = "/:".join([""] + dir_parts + [""])
-
+    if not location or not location.startswith("file://localhost"):
         return {
-            "DIR": dir_path,
-            "FILE": file_name,
+            "DIR": "/:",
+            "FILE": "",
             "VOLUME": volume
         }
+
+    path = location.replace("file://localhost", "")
+    path = urllib.parse.unquote(path)
+
+    # Check if it's a Windows path (contains drive letter like /D:/ or /C:/)
+    if len(path) > 3 and path[0] == "/" and path[2] == ":":
+        # Windows path: /D:/folder/file.mp3
+        drive_letter = path[1].upper()
+        path_without_drive = path[3:]
+        parts = [p for p in path_without_drive.split("/") if p]  # Remove empty parts
+
+        file_name = parts[-1] if parts else ""
+        dir_parts = parts[:-1] if parts else []
+
+        dir_parts = [f"{drive_letter}:"] + dir_parts
+        dir_path = "/:".join([""] + dir_parts + [""])
+
+    else:
+        # Mac/Unix path: /Users/DJ/file.mp3
+        parts = [p for p in path.split("/") if p]  # Remove empty parts
+
+        if not parts:
+            return {
+                "DIR": "/:",
+                "FILE": "",
+                "VOLUME": volume
+            }
+
+        file_name = parts[-1] if parts else ""
+        dir_parts = parts[:-1]
+        dir_path = "/:".join([""] + dir_parts + [""])
+
     return {
-        "DIR": "/:",
-        "FILE": "",
-        "VOLUME": "Macintosh HD"
+        "DIR": dir_path,
+        "FILE": file_name,
+        "VOLUME": volume
     }
 
 
