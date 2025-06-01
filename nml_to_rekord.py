@@ -20,7 +20,7 @@ class Traktor2Rekordbox:
         """Initialize the converter with default values."""
         self.track = None
         self.cues = []
-        self.track_index = 1
+        self.track_index = 0
         self.cue_index = 0
         self.added_tempos = 0
         self.track_info = {}
@@ -119,7 +119,7 @@ class Traktor2Rekordbox:
 
         self.cue_index += 1
 
-    def _process_cue(self, cue):
+    def process_cue(self, cue):
         """
         Process a single CUE_V2 element and add appropriate elements to the track.
 
@@ -131,14 +131,10 @@ class Traktor2Rekordbox:
         else:
             self.add_cue(cue)
 
-    def default_tempo(self, entry, bpm):
+    def default_tempo(self):
         """
         Add a default TEMPO element if no beatgrid markers were processed
         for tracks that don't have flexible beatgrids.
-
-        Args:
-            entry: NML ENTRY element
-            bpm: Track BPM value
         """
         if self.added_tempos == 0:
             # Look for AutoGrid cue to get the start position
@@ -149,15 +145,14 @@ class Traktor2Rekordbox:
                     break
 
             if autogrid_start is not None:
-                self.add_tempo(autogrid_start, bpm)
+                self.add_tempo(autogrid_start, self.track_info['bpm'])
 
-    def create_track(self, collection, track_id, location):
+    def add_track(self, collection, location):
         """
         Create the main TRACK element with all metadata.
 
         Args:
             collection: Parent COLLECTION element
-            track_id: Unique track identifier
             location: Track file location
 
         Returns:
@@ -169,7 +164,7 @@ class Traktor2Rekordbox:
 
         info = self.track_info
         return ET.SubElement(collection, "TRACK",
-             TrackID=track_id, Name=info['title'], Artist=info['artist'],
+             TrackID=f"{self.track_index:09d}", Name=info['title'], Artist=info['artist'],
              Album=info['album'], Genre=info['genre'], Kind=kind, Size=size,
              TotalTime=info['playtime'], DiscNumber="0", TrackNumber=f"{self.track_index}",
              Year=creation_date, AverageBpm=f"{info['bpm']}", BitRate=f"{info['bitrate']}",
@@ -193,7 +188,7 @@ class Traktor2Rekordbox:
     def process_cues(self, entry):
         self.cues = entry.findall("CUE_V2")
         for cue in self.cues:
-            self._process_cue(cue)
+            self.process_cue(cue)
 
     def process_entry(self, entry, collection):
         """
@@ -215,14 +210,13 @@ class Traktor2Rekordbox:
         self.set_track_info(entry)
         location = get_location(get_element(entry, "LOCATION"))
 
-        track_id = f"{self.track_index:04d}"
-        self.track = self.create_track(collection, track_id, location)
+        self.track = self.add_track(collection, location)
 
         # Process all cues and tempo markers
         self.process_cues(entry)
 
         # Add fallback tempo if no beat grid markers were found
-        self.default_tempo(entry, self.track_info['bpm'])
+        self.default_tempo()
 
         return True
 
@@ -236,7 +230,8 @@ class Traktor2Rekordbox:
         entries = root.findall(".//ENTRY")
 
         rekordbox = ET.Element("DJ_PLAYLISTS", Version="1.0.0")
-        collection = ET.SubElement(rekordbox, "COLLECTION", Entries=str(len(entries)))
+        track_count = sum(1 for entry in entries if not self.is_playlist(entry))
+        collection = ET.SubElement(rekordbox, "COLLECTION", Entries=str(track_count))
 
         # Process each track
         for entry in entries:
@@ -245,93 +240,6 @@ class Traktor2Rekordbox:
 
         tree = ET.ElementTree(rekordbox)
         tree.write(xml_file, encoding="utf-8", xml_declaration=True)
-
-
-
-# def convert_nml_to_xml(nml_file, xml_file):
-#     tree = ET.parse(nml_file)
-#     root = tree.getroot()
-#
-#     entries = root.findall(".//ENTRY")
-#
-#     rekordbox = ET.Element("DJ_PLAYLISTS", Version="1.0.0")
-#     collection = ET.SubElement(rekordbox, "COLLECTION", Entries=str(len(entries)))
-#
-#     track_nb = 1
-#
-#     # Process each track
-#     for entry in entries:
-#         if get_element(entry, "PRIMARYKEY") is not None:
-#             continue
-#
-#         track_id = f"{track_nb:04d}"
-#         track_nb += 1
-#         title = get_attribute(entry, "TITLE")
-#         artist = get_attribute(entry, "ARTIST")
-#
-#         album = get_attribute(get_element(entry, "ALBUM"), "TITLE")
-#         key = get_tonalikey(get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE"))
-#         bpm = float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
-#
-#         info = get_element(entry, "INFO")
-#         color = get_track_color(get_attribute(info, "COLOR"))
-#         genre = get_attribute(info, "GENRE")
-#         playtime = get_attribute(info, "PLAYTIME")
-#         playcount = get_attribute(info, "PLAYCOUNT")
-#         bitrate = float(get_attribute(info, "BITRATE")) / 1000
-#         import_date = format_date(get_attribute(info, "IMPORT_DATE"))
-#         modif_date = format_date(get_attribute(entry, "MODIFIED_DATE"))
-#         last_played = format_date(get_attribute(info, "LAST_PLAYED"))
-#         ranking = get_attribute(info, "RANKING")
-#
-#         location = get_location(get_element(entry, "LOCATION"))
-#
-#         kind = "3"
-#         creation_date = "0"
-#         size = "0"
-#
-#         # LOUDNESS / COMMENT / SIZE
-#
-#         track = ET.SubElement(collection, "TRACK",
-#             TrackID=track_id, Name=title, Artist=artist,
-#             Album=album, Genre=genre, Kind=kind, Size=size,
-#             TotalTime=playtime, DiscNumber="0", TrackNumber=f"{track_nb}",
-#             Year=creation_date, AverageBpm=f"{bpm}", BitRate=f"{bitrate}",
-#             DateModified=modif_date, DateAdded=import_date,
-#             SampleRate="0", PlayCount=playcount, LastPlayed=last_played,
-#             Rating=ranking, Tonality=key, Location=location, Colour=color)
-#
-#         i = 0
-#         inizio = None
-#         for cue in entry.findall("CUE_V2"):
-#             cue_type = get_attribute(cue, "TYPE") # type = 0 => autoGrid et hotcues / 4 = loop
-#             cue_name = get_attribute(cue, "NAME")
-#             start = float(get_attribute(cue, "START")) / 1000
-#             length = get_attribute(cue, "LEN")
-#             no = get_attribute(cue, "HOTCUE")
-#
-#             if cue_name == "AutoGrid":
-#                 inizio = start
-#
-#             hot_cue = ET.SubElement(track, "POSITION_MARK", Type=get_cue_type(cue_type), Num=f"{no or i}", Start=f"{start}", Name=cue_name)
-#             # {no if no != "-1" else i}
-#             set_cue_color(hot_cue, ctype=cue_type, cname=cue_name)
-#
-#             # Num="-1" allows the cue to be indexed but not displayed in the pad / useful for grid
-#             # hot_cue_0 = ET.SubElement(track, "POSITION_MARK", Type=cue_type, Num="-1", Start=f"{start}", Name=cue_name)
-#             # set_cue_color(hot_cue_0, ctype=cue_type, cname=cue_name)
-#
-#             if float(length) != 0:
-#                 end = start + (float(length) / 1000)
-#                 hot_cue.set("End", f"{end}")
-#                 # hot_cue_0.set("End", f"{end}")
-#             i += 1
-#
-#         if inizio is not None:
-#             ET.SubElement(track, "TEMPO", Inizio=f"{inizio}", Bpm=f"{round(bpm, 2)}", Battito="1")
-#
-#     tree = ET.ElementTree(rekordbox)
-#     tree.write(xml_file, encoding="utf-8", xml_declaration=True)
 
 
 if __name__ == "__main__":
