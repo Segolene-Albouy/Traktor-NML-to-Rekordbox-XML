@@ -30,6 +30,7 @@ class Traktor2Rekordbox:
         info = get_element(entry, "INFO")
 
         self.track_info = {
+            'id': get_attribute(entry, "AUDIO_ID"),
             'title': get_attribute(entry, "TITLE"),
             'artist': get_attribute(entry, "ARTIST"),
             'album': get_attribute(get_element(entry, "ALBUM"), "TITLE"),
@@ -252,7 +253,7 @@ if __name__ == "__main__":
         if not exists(nml_file):
             print("Usage: python nml_to_rekord.py playlist.nml")
 
-        rekordbox_file = f"{''.join(nml_file.split('.')[:-1])}.rekordbox.xml"
+        rekordbox_file = f"{''.join(nml_file.split('.')[:-1])}.xml"
         open(rekordbox_file, "w").close()
 
         converter = Traktor2Rekordbox()

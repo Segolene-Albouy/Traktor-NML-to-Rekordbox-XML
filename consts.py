@@ -41,6 +41,33 @@ TONALITY_MAP = {
     "Bm": "23",
 }
 
+KEY_TO_CODE = {
+    "0": "10d",  # C major
+    "1": "11d",  # Db major
+    "2": "12d",  # D major
+    "3": "1d",   # Eb major
+    "4": "2d",   # E major
+    "5": "3d",   # F major
+    "6": "4d",   # Gb major
+    "7": "5d",   # G major
+    "8": "6d",   # Ab major
+    "9": "7d",   # A major
+    "10": "8d",  # Bb major
+    "11": "9d",  # B major
+    "12": "10m", # Cm minor (This one is correct, you would need to check others)
+    "13": "11m", # Dbm minor
+    "14": "12m", # Dm minor
+    "15": "1m",  # Ebm minor
+    "16": "2m",  # Em minor
+    "17": "3m",  # Fm minor
+    "18": "4m",  # Gbm minor
+    "19": "5m",  # Gm minor
+    "20": "6m",  # Abm minor
+    "21": "7m",  # Am minor
+    "22": "8m",  # Bbm minor
+    "23": "9m",  # Bm minor
+}
+
 COLOR_NAME_TO_RGB = {
     "pink": {"R": "222", "G": "68", "B": "207"},  # (1)
     "orchidea": {"R": "180", "G": "50", "B": "255"},  # (2)

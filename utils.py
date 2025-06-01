@@ -39,6 +39,11 @@ def format_date(date):
         return date
 
 
+def today():
+    """Get today's date in the target format."""
+    return datetime.now().strftime(DATE_FORMAT.get(target))
+
+
 def _get_traktor_track_color(rgb_color):
     """Convert Rekordbox RGB color to Traktor color number."""
     return COLOR_MAP.get(rgb_color, "")
@@ -85,7 +90,7 @@ def get_cue_type(ctype):
 
 def _get_traktor_key(tonality):
     """Convert Rekordbox tonality to Traktor musical key."""
-    return TONALITY_MAP.get(tonality, "")
+    return TONALITY_MAP.get(tonality, "0")
 
 
 def _get_rekordbox_tonality(musical_key):
@@ -97,9 +102,9 @@ def _get_rekordbox_tonality(musical_key):
 
 
 def get_tonalikey(tonalikey):
-    if target == "traktor":
+    if target == "rekordbox":
         return _get_rekordbox_tonality(tonalikey)
-    elif target == "rekordbox":
+    elif target == "traktor":
         return _get_traktor_key(tonalikey)
     return ""
 
@@ -213,7 +218,9 @@ def get_cue_color_values(r, g, b):
 
 def _set_traktor_cue_color(cue, r, g, b):
     ctype = get_cue_color_values(r, g, b)
-    cue.set("Type", ctype)
+    # cue.set("Type", ctype)
+    # if ctype in ["1", "2"]: # Only for fade-in/fade-out which need color
+    #     cue.set("COLOR", f"#{int(r):02X}{int(g):02X}{int(b):02X}")
     return cue
 
 def _set_rekordbox_cue_color(cue, ctype, cname):
