@@ -1,111 +1,174 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<NML VERSION="19">
-    <HEAD COMPANY="www.native-instruments.com" PROGRAM="Traktor"></HEAD>
-    <MUSICFOLDERS></MUSICFOLDERS>
+<NML VERSION="20">
+    <HEAD COMPANY="www.native-instruments.com" PROGRAM="Traktor Pro 4"></HEAD>
     <COLLECTION ENTRIES="6">
-        <ENTRY MODIFIED_DATE="2023/5/2" MODIFIED_TIME="19456" AUDIO_ID="AQUUVDIjMjIkVUQzRDREeommaaqWesmoitu5X////////////////////////////////b7/////////////////////////////u4ma////////////////////////////////+9/////////////////////////rybur2qu5VUNERUNERVRERFRERoiGVYmGVZl5aJqZWf///////////////////////////////cv/////////////////////////////////////////////////////////////////////////////////////////////////////EA==" TITLE="Boots" ARTIST="Bad Boombox, MC Yung Lil">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="Bad Boombox, MC Yung Lil - Boots.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+        <ENTRY MODIFIED_DATE="2025/4/16" MODIFIED_TIME="64583"
+               AUDIO_ID="ANMGd3ZmZWZmZmZmZWZmVXd3Zmd3dmZ2d2ZmdndnZndmZmdmZmZnZ3Zmd2ZnZld2dmZmZ2ZmZmdmZ3Z2d2Z4dmZmZ3Z2Z3Z3dmZ3ZmZ2aGZmd2d3Zndnd2Zmd3Zmd3d2Z3d3dmd3d2Zmd4d3iJd3d3d4Z3d3d2Znd2h3eImGZWZmZnZnZnZmZ2dmZVZmZmZmZmZmdmZmZ3Z3d2d5hmdmd3Z2Z2d3dmdmZWVmaHZmZ2ZnZmd3ZmZmZnZnaHd2Z3d3dmd3d2Zmd4d3iJhnZnd3d3d3d3Zmd3eIeIiWd3d3d3d3eId2d3eHh4mIdnd3d3Z3d3dmZmZnZmZmdVREREQzIg=="
+               TITLE="Reine de la Nuit" ARTIST="Régine">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="Régine - Reine de la Nuit.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
             <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="128000" GENRE="Trance" KEY="11m" PLAYCOUNT="6" PLAYTIME="261" PLAYTIME_FLOAT="260.989380" RANKING="204" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/5/27" FLAGS="12" FILESIZE="4108" COLOR="2"></INFO>
-            <TEMPO BPM="147.999908" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="-2.783469" PERCEIVED_DB="-2.215027" ANALYZED_DB="-2.215027"></LOUDNESS>
-            <MUSICAL_KEY VALUE="19"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="216.148958" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="216.148958" LEN="6486.490499" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="26162.110954" LEN="0.000000" REPEATS="-1" HOTCUE="1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="251162.250139" LEN="6486.490499" REPEATS="-1" HOTCUE="7"></CUE_V2>
+            <INFO BITRATE="192000" GENRE="Variété" COMMENT="+DB" KEY="8m" PLAYCOUNT="5" PLAYTIME="212"
+                  PLAYTIME_FLOAT="211.304489" RANKING="204" IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/4/16" FLAGS="12"
+                  FILESIZE="4976" COLOR="4"></INFO>
+            <TEMPO BPM="148.605820" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="2.914383" PERCEIVED_DB="4.937744" ANALYZED_DB="4.937744"></LOUDNESS>
+            <MUSICAL_KEY VALUE="22"></MUSICAL_KEY>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="102.709211" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="148.605820"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="102.709211" LEN="0.000000" REPEATS="-1" HOTCUE="1" COLOR="#FFFFFF"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="4947.741535" LEN="6460.043099" REPEATS="-1" HOTCUE="0"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="192288.991399" LEN="12920.086197" REPEATS="-1" HOTCUE="7"></CUE_V2>
         </ENTRY>
-        <ENTRY MODIFIED_DATE="2023/6/10" MODIFIED_TIME="67837" AUDIO_ID="AOIAIzMyM0RENERERENERFVVVVVERERFVnZmZ2ZmZmd2Z3dmZTZ3Zmc1d4Znd2d3Z3dmeHZ3dniFRVV3dmd1Z3dmd2Z3dnd3d3Znd2d3dnd3d3Z4h3d3Z4h3d1VVVndmd3Z3dmdkd3dnd3d3VFRUVVVVZEVWMzRneHd4h3iGd4d3d2d1Z3dmd2Z3Znd3d3UiEkZmZmZlVVVUVWZnZmVlVVVFRndmd2d3ZmZ2Z3Zmdnd3ZndmVmZWZVZmVWZVZlVWZVZjMjN3d2d1Z3dmd2Z3dnd2d3d3d2d3Z3h2d3Z4hnd3Z4d3d2d4dVVURVVVVUVVVVVVVVVVVVVSIiEAAAAAAA==" TITLE="The M.E.L.L.O." ARTIST="Bass Bumpers">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="Bass Bumpers - The M.E.L.L.O..mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+
+        <ENTRY MODIFIED_DATE="2024/10/10" MODIFIED_TIME="41606"
+               AUDIO_ID="AgVsu7u7u7u7vsu7u7u7u3jczMvMu7u33My7zMzMzN3MzMzMzMze3MzM3MzMy0MREzEhATR1Q0Q0MzREn/////////////////5r////////hP////////mP////////b////////6r////////2////////+Y////////8+////////ev////////Xv///////7lzTSFIMook3d3dzd3d3K7d3d3t3d3e7d7e7t7dmv///+///8Xf///u///6r////e///o7///7v//+q7d3dzd3dxsu7u6u7u7aP7+7t7u7tff7u7t/v7qj////e7//nkyIiIyERIkQQAAAAAAAA=="
+               TITLE="ass bitch bass junkie" ARTIST="TakaTuka">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="TakaTuka - ass bitch bass junkie.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
             <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="128000" GENRE="Trance" COMMENT="1 mélodie / 8 basses+acid+voix" PLAYCOUNT="9" PLAYTIME="227" PLAYTIME_FLOAT="226.272659" RANKING="153" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/6/26" FLAGS="12" FILESIZE="3536" COLOR="2"></INFO>
-            <TEMPO BPM="124.967270" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="1.183454" PERCEIVED_DB="4.341843" ANALYZED_DB="4.341843"></LOUDNESS>
-            <MUSICAL_KEY VALUE="14"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="618.782878" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="4459.788610" LEN="7682.011464" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="206112.589545" LEN="7682.011464" REPEATS="-1" HOTCUE="7"></CUE_V2>
-        </ENTRY>
-        <ENTRY MODIFIED_DATE="2023/6/22" MODIFIED_TIME="52359" AUDIO_ID="AFQAASMzEDUyABVENDMkMQA0IhMn/f/P/P/P/P/JVDRP7v7v3/3/3/20RETPz/z/z/z+3+3+7+3879/9/9/8/8pUND/9/8/t/t/u/u/f/f/f/P/P/P/LRXec7/7PmP3/qPz/qv3+afz9nP37nv36p3nO/935j9/6n8/qz9/Iz8+4/9+o9yNGY0ZW/P/P/P/P/P/KVDQ/7f7P3f3fzv21RESfz/z/z/z/3/z/3+z939397978/8tUNDz9/8/8/8/9/t/e/d/f/e/P/P/LRGeL7//PqP7vqP3vmv3/mPzumv39nPz8p3i+/+z5j976j8/6r9/pr8/Zz9+56AAAAAAAAA==" TITLE="La Maldita Bulla" ARTIST="Mani Malon">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="Mani Malon - La Maldita Bulla.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
-            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="128000" GENRE="Reggaeton" PLAYCOUNT="3" PLAYTIME="84" PLAYTIME_FLOAT="83.983673" RANKING="102" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/6/26" FLAGS="12" FILESIZE="1324" COLOR="2"></INFO>
-            <TEMPO BPM="124.000465" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="-0.698765" PERCEIVED_DB="1.227234" ANALYZED_DB="1.227234"></LOUDNESS>
-            <MUSICAL_KEY VALUE="15"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="118.340284" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="13666.676532" LEN="7741.906427" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="69311.628977" LEN="3870.953214" REPEATS="-1" HOTCUE="7"></CUE_V2>
-        </ENTRY>
-        <ENTRY MODIFIED_DATE="2023/5/23" MODIFIED_TIME="77912" AUDIO_ID="AWAWZmRENDMzMzf//////////////////////f/////////////////////s/////////////////////5b///7//////////+//////af/////////////////////+///////////f/////////1n/////////9Y///////////f/////////+r/7///////9XYzMzM0MyMzJUMzNDNDMzRDn//////////////////////f/////////////////////e/////////////////////3r+/+////////7u7u/v////vf//7////////v/+//////+FZneYYQAAAA==" TITLE="Ich Bin Nackt" ARTIST="TakaTuka">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="TakaTuka - Ich Bin Nackt.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
-            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="320000" GENRE="Tekno" PLAYCOUNT="2" PLAYTIME="353" PLAYTIME_FLOAT="352.272003" RANKING="204" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/6/8" FLAGS="12" FILESIZE="13764" COLOR="1"></INFO>
-            <TEMPO BPM="162.999863" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="-0.312809" PERCEIVED_DB="0.803070" ANALYZED_DB="0.803070"></LOUDNESS>
-            <MUSICAL_KEY VALUE="6"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="419.015139" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="4836.196775" LEN="2944.787757" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="29866.892710" LEN="2944.787757" REPEATS="-1" HOTCUE="1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="231584.854071" LEN="2944.787757" REPEATS="-1" HOTCUE="6"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="331707.637812" LEN="2944.787757" REPEATS="-1" HOTCUE="7"></CUE_V2>
-        </ENTRY>
-        <ENTRY MODIFIED_DATE="2023/6/9" MODIFIED_TIME="66333" AUDIO_ID="AYYWh2Zmdnd3Z2eHr//////////+oo/////v7//+////////////////////////////lp/////v//7//+/////////////9v/////////7/////////7//////v/////////////////////////8dnZWd3aIiHVTSv///////////////////////+qe///////////6av/////+/////////////////+Za/////////////////////////////////////////////////6Z3a////////////////////////////////////////quYd2dlQyEREREQAAAA==" TITLE="Take the Tram" ARTIST="Bad Girlz">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="Bad Girlz - Take the Tram.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
-            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="192000" GENRE="Acid" PLAYCOUNT="5" PLAYTIME="391" PLAYTIME_FLOAT="390.112640" RANKING="153" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/6/21" FLAGS="12" FILESIZE="9144" COLOR="1"></INFO>
-            <TEMPO BPM="125.000031" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="-1.782702" PERCEIVED_DB="-0.156677" ANALYZED_DB="-0.156677"></LOUDNESS>
+            <INFO BITRATE="320000" GENRE="Tekno" COMMENT="Visit https://taka-tuka.bandcamp.com"
+                  COVERARTID="058/0Z2BSWBCPX531AGFZ41UCZAJ3SPC" KEY="2d" PLAYCOUNT="8" PLAYTIME="517"
+                  PLAYTIME_FLOAT="516.989380" RANKING="204" IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/6/1"
+                  RELEASE_DATE="2020/1/1" FLAGS="12" FILESIZE="20372" COLOR="7"></INFO>
+            <TEMPO BPM="129.999863" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="0.103930" PERCEIVED_DB="4.271423" ANALYZED_DB="4.271423"></LOUDNESS>
             <MUSICAL_KEY VALUE="7"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="574.254513" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="8254.252638" LEN="3839.999063" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="33214.246544" LEN="3839.999063" REPEATS="-1" HOTCUE="1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="286654.184669" LEN="3839.999063" REPEATS="-1" HOTCUE="6"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="352894.168497" LEN="3839.999063" REPEATS="-1" HOTCUE="7"></CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="51.676366" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="129.999863"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="51.676366" LEN="0.000000" REPEATS="-1" HOTCUE="2" COLOR="#FFFFFF"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="24051.701720" LEN="3692.311593" REPEATS="-1" HOTCUE="0"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="134821.049503" LEN="3692.311593" REPEATS="-1" HOTCUE="1"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="310205.850160" LEN="0.000000" REPEATS="-1" HOTCUE="3"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="372975.147238" LEN="7384.623186" REPEATS="-1" HOTCUE="6"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="433898.288519" LEN="7384.623186" REPEATS="-1" HOTCUE="7"></CUE_V2>
         </ENTRY>
-        <ENTRY MODIFIED_DATE="2023/6/19" MODIFIED_TIME="78761" AUDIO_ID="APSP///////v////7/+2WFRI///v////////////////////7////+///////2ZlRnZUMiIiIjIjRDQzNEREQzNFdURkRFQzY0lzIlIiQiFBGmNERVdmZ2ZmVVVVVVVVVEb///////////////////////////////////////+zR//+/////v///vef/2U1VVf//v///////////////////+z/7f/t//7/7v/u//3/+lVURFNUU0VkVFNVU0RUV3ZlVGZlZWRmZVVTVVNURERGdUMiIiIiM1z///////////////////////////////////////7v+3UyIRAAAA==" TITLE="Other Side" ARTIST="Azzecca">
-            <LOCATION DIR="/:Users/:DJ/:" FILE="Azzecca - Other Side.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+
+        <ENTRY MODIFIED_DATE="2025/4/16" MODIFIED_TIME="61733"
+               AUDIO_ID="ARglRVRERFVEVVVVZVUiNUVERERERFRVVEVVVVVEVVVEVVRUVFVVVVVVV2ZomIhniYd4iHdlVFd2eJmXaIiHZ4iYl3ZYdnZlRGiJh3aJmJiZmZmIh2VYmqqImXRFVURERVRERVVERFVVVVVEREVUREVURERVVVVUVERVRERFVVVFVUVVZVVVVVVVVVVVVVV3ZlRDMzMjM1VDM0REVGVVRVRVVXZGZDMzNERVVVVVVWVVVVVUVVVWdmZ2ZmVmZWZmZmZmZnh4d3h4h2d4hniIiYiIiGZmdmeIiId4iYiIdmZnh2eIiGeId3dmZ2h3eIdndmZEVEMyIiIRERAAAAAAAA=="
+               TITLE="Atomic" ARTIST="Blondie">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="Blondie - Atomic.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+            <ALBUM TRACK="5" TITLE="Hits Cd1"></ALBUM>
             <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
-            <INFO BITRATE="192000" GENRE="Tropical" PLAYCOUNT="3" PLAYTIME="245" PLAYTIME_FLOAT="244.401627" RANKING="204" IMPORT_DATE="2023/6/29" LAST_PLAYED="2023/6/26" FLAGS="12" FILESIZE="5732" COLOR="1"></INFO>
-            <TEMPO BPM="125.001282" BPM_QUALITY="100.000000"></TEMPO>
-            <LOUDNESS PEAK_DB="-1.807593" PERCEIVED_DB="-0.464920" ANALYZED_DB="-0.464920"></LOUDNESS>
+            <INFO BITRATE="156226" GENRE="Rock" COMMENT="#classic +DB #ST" KEY="2m" PLAYCOUNT="2" PLAYTIME="281"
+                  PLAYTIME_FLOAT="280.372253" RANKING="204" IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/5/7"
+                  RELEASE_DATE="2005/1/1" FLAGS="12" FILESIZE="5368" COLOR="3"></INFO>
+            <TEMPO BPM="134.329773" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="-0.027446" PERCEIVED_DB="3.785629" ANALYZED_DB="3.785629"></LOUDNESS>
             <MUSICAL_KEY VALUE="16"></MUSICAL_KEY>
-            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="88.570669" LEN="0.000000" REPEATS="-1" HOTCUE="-1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="88.570669" LEN="3839.960625" REPEATS="-1" HOTCUE="0"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="57687.980050" LEN="3839.960625" REPEATS="-1" HOTCUE="1"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="172886.798812" LEN="3839.960625" REPEATS="-1" HOTCUE="6"></CUE_V2>
-            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="218966.326317" LEN="1919.980313" REPEATS="-1" HOTCUE="7"></CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="222.798154" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="134.329773"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="222.798154" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+        </ENTRY>
+
+        <ENTRY MODIFIED_DATE="2025/6/1" MODIFIED_TIME="32382"
+               AUDIO_ID="AQ02ZmZmZmj/////////////////////////////////////////////////////9SEyIyIyIyMyIzNCIy////////////////////////////////////////////////////////////utpFVEVVRFOP/////////////////////////////////////////////////////7///////////////f////////////////////////////////////////////+CP///////////////z//////////////8/////////////////////////////7IQAAAAAAAA=="
+               TITLE="Colour Black" ARTIST="Loud On Street">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="Loud On Street - Colour Black.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+            <ALBUM TITLE="Colour Black"></ALBUM>
+            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+            <INFO BITRATE="320000" GENRE="Tekno" COMMENT="change de BPM" COVERARTID="107/LHGPQRDSVPSY2AA1LCBMACDT1R0D"
+                  KEY="10m" PLAYCOUNT="8" PLAYTIME="269" PLAYTIME_FLOAT="268.679993" RANKING="204"
+                  IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/6/1" RELEASE_DATE="2023/1/1" FLAGS="12" FILESIZE="11300"
+                  COLOR="1"></INFO>
+            <TEMPO BPM="153.028107" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="-1.799996" PERCEIVED_DB="-1.197327" ANALYZED_DB="-1.197327"></LOUDNESS>
+            <MUSICAL_KEY VALUE="12"></MUSICAL_KEY>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="47.830457" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="153.028107"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="1616.169830" LEN="3136.678746" REPEATS="-1" HOTCUE="1"></CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="6321.187950" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="152.966949"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="13381.536527" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="156.496582"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="30634.310023" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="156.013519"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="50247.995830" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="153.062668"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="62689.699039" LEN="0.000000" REPEATS="-1" HOTCUE="3"></CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="62791.877498" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="154.918961"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="110429.689785" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="157.285416"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="119203.547991" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="155.002090"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="178042.982002" LEN="12386.929714" REPEATS="-1" HOTCUE="6"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="213655.404930" LEN="6193.464857" REPEATS="-1" HOTCUE="7"></CUE_V2>
+        </ENTRY>
+
+        <ENTRY MODIFIED_DATE="2025/3/17" MODIFIED_TIME="84211"
+               AUDIO_ID="AOAAREVSFWQSVEMyREVSJUQhE3XHMiQzIRJ1vGQ0MzIiVrtDZWY1U2h+pTh4ZCR4W4MzRHZFR2npiHRJlEV52ZqHaFVWmvx3lzNTJKh4mqurmXaamId4ZlM3l4x2Z4VTIjdcuFVmQ3doeaZld2Q0N4fXRDZlQ0eGpkMzVFVUiauVIiZmczNWl7hWZFp2y4aJV3UzQ0V3VZd4hTMjSoVUOGZoMzeGV5doh0aIh5qFeHZlR5fnMkhDQQGJykI7ZCerqpqpmqqZqqmruqqYd3eJd2dEqZ27vKiIhry6uZvOyqmb28mIhr2mioQ1dHemMyVVI4qoi5ZmdCJSEAAAAAAAAA=="
+               TITLE="Group Autogenics I" ARTIST="The Books">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="The Books - Group Autogenics I.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+            <INFO BITRATE="320000" COMMENT="#pause" PLAYCOUNT="3" PLAYTIME="225" PLAYTIME_FLOAT="224.026123"
+                  RANKING="204" IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/5/7" FLAGS="12" FILESIZE="8752"
+                  COLOR="5"></INFO>
+            <TEMPO BPM="95.242844" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="-0.707060" PERCEIVED_DB="2.658646" ANALYZED_DB="2.658646"></LOUDNESS>
+            <MUSICAL_KEY VALUE="23"></MUSICAL_KEY>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="924.109459" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="95.242844"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="924.109459" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+        </ENTRY>
+
+        <ENTRY MODIFIED_DATE="2025/5/25" MODIFIED_TIME="1486"
+               AUDIO_ID="AVsTYxABERRlIREREkYyEiIjRlMzERGL2aiZmJrLmYmJiqyZiZmJq6mYmJjf/+z//r7//O//3f/+z//r//+yAADP/+z//r///O7/zf/+z//r///O//y8/+3//r///O//zf/+3//r///c38///+3//r///P//zv/+3//s///P/7b//93//r//7P/+zv/93//s//7P/7f/9DMzIzZ0MjMyP/8yMzMzZ1MzRDX//97v/s///P/+z//97v/s///P/+///97v/s///P/+z//97//d//7P/+3v/83v/d//6//+zv/83v/d//6//1X/+ZmZmKvJqZmZm7uZiZmKrKpBIhEAAA=="
+               TITLE="Creepin' Around The Bend" ARTIST="Reflex Blue">
+            <LOCATION DIR="/:Users/:DJ/:" FILE="Reflex Blue - Creepin' Around The Bend.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+            <ALBUM TRACK="3" TITLE="Fuzion EP"></ALBUM>
+            <MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+            <INFO BITRATE="320000" GENRE="House" COMMENT="Visit https://kalaharioystercult.bandcamp.com"
+                  COVERARTID="070/GSX4ZOAZDVEUEALFGDVJCW3KYWAC" PLAYCOUNT="5" PLAYTIME="348" PLAYTIME_FLOAT="347.036743"
+                  RANKING="255" IMPORT_DATE="2025/6/5" LAST_PLAYED="2025/6/1" RELEASE_DATE="2024/1/1" FLAGS="12"
+                  FILESIZE="13712" COLOR="2"></INFO>
+            <TEMPO BPM="134.000031" BPM_QUALITY="100.000000"></TEMPO>
+            <LOUDNESS PEAK_DB="0.186095" PERCEIVED_DB="-0.485802" ANALYZED_DB="-0.485802"></LOUDNESS>
+            <MUSICAL_KEY VALUE="21"></MUSICAL_KEY>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="1754.381180" LEN="0.000000" REPEATS="-1" HOTCUE="-1">
+                <GRID BPM="134.000031"></GRID>
+            </CUE_V2>
+            <CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="1754.381180" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="1754.381180" LEN="0.000000" REPEATS="-1" HOTCUE="4"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="7127.514284" LEN="7164.177473" REPEATS="-1" HOTCUE="1"></CUE_V2>
+            <CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="5" START="225634.927207" LEN="3582.088736" REPEATS="-1" HOTCUE="6"></CUE_V2>
         </ENTRY>
     </COLLECTION>
     <SETS ENTRIES="0"></SETS>
     <PLAYLISTS>
         <NODE TYPE="FOLDER" NAME="$ROOT">
             <SUBNODES COUNT="1">
-                <NODE TYPE="FOLDER" NAME="DJ SETS">
-                    <SUBNODES COUNT="1">
-                        <NODE TYPE="PLAYLIST" NAME="Sautillant">
-                            <PLAYLIST ENTRIES="6" TYPE="LIST" UUID="4769569fa3ce4caba85980a2abfc8c68">
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:TakaTuka - Ich Bin Nackt.mp3"></PRIMARYKEY>
-                                </ENTRY>
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Bad Girlz - Take the Tram.mp3"></PRIMARYKEY>
-                                </ENTRY>
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Bad Boombox, MC Yung Lil - Boots.mp3"></PRIMARYKEY>
-                                </ENTRY>
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Mani Malon - La Maldita Bulla.mp3"></PRIMARYKEY>
-                                </ENTRY>
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Bass Bumpers - The M.E.L.L.O..mp3"></PRIMARYKEY>
-                                </ENTRY>
-                                <ENTRY>
-                                    <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Azzecca - Other Side.mp3"></PRIMARYKEY>
-                                </ENTRY>
-                            </PLAYLIST>
-                        </NODE>
-                    </SUBNODES>
+                <NODE TYPE="PLAYLIST" NAME="TraktorNML">
+                    <PLAYLIST ENTRIES="6" TYPE="LIST" UUID="b569fc95f96c472e84a52344fbe25080">
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Régine - Reine de la Nuit.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Blondie - Atomic.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Reflex Blue - Creepin' Around The Bend.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:Loud On Street - Colour Black.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:TakaTuka - ass bitch bass junkie.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                        <ENTRY>
+                            <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:DJ/:The Books - Group Autogenics I.mp3"></PRIMARYKEY>
+                        </ENTRY>
+                    </PLAYLIST>
                 </NODE>
             </SUBNODES>
         </NODE>

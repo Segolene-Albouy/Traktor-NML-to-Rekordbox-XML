@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<DJ_PLAYLISTS Version="1.0.0">
+    <COLLECTION Entries="6">
+        <TRACK TrackID="000000000" Name="Reine de la Nuit" Artist="Régine" Album="" Genre="Variété" Kind="3" Size="0"
+               TotalTime="212" DiscNumber="0" TrackNumber="0" Year="0" AverageBpm="148.60582" BitRate="192.0"
+               DateModified="2025-04-16" DateAdded="2025-06-05" SampleRate="0" PlayCount="5" LastPlayed="2025-04-16"
+               Rating="204" Tonality="Bbm" Location="file://localhost/Users/DJ/Régine%20-%20Reine%20de%20la%20Nuit.mp3" Colour="0x00FF00">
+            <TEMPO Inizio="0.102709211" Bpm="148.61" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="1" Start="0.102709211" Name="AutoGrid" Red="48" Green="90" Blue="255"/>
+            <POSITION_MARK Type="4" Num="0" Start="4.9477415350000005" Name="n.n." Red="224" Green="100" Blue="27" End="11.407784634000002"/>
+            <POSITION_MARK Type="4" Num="7" Start="192.288991399" Name="n.n." Red="224" Green="100" Blue="27" End="205.209077596"/>
+        </TRACK>
+
+        <TRACK TrackID="000000001" Name="ass bitch bass junkie" Artist="TakaTuka" Album="" Genre="Tekno" Kind="3"
+               Size="0" TotalTime="517" DiscNumber="0" TrackNumber="1" Year="0" AverageBpm="129.999863" BitRate="320.0"
+               DateModified="2024-10-10" DateAdded="2025-06-05" SampleRate="0" PlayCount="8" LastPlayed="2025-06-01"
+               Rating="204" Tonality="G" Location="file://localhost/Users/DJ/TakaTuka%20-%20ass%20bitch%20bass%20junkie.mp3" Colour="0x660099">
+            <TEMPO Inizio="0.051676366" Bpm="130.0" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="2" Start="0.051676366" Name="AutoGrid" Red="48" Green="90" Blue="255"/>
+            <POSITION_MARK Type="4" Num="0" Start="24.05170172" Name="n.n." Red="224" Green="100" Blue="27" End="27.744013313"/>
+            <POSITION_MARK Type="4" Num="1" Start="134.82104950299998" Name="n.n." Red="224" Green="100" Blue="27" End="138.51336109599998"/>
+            <POSITION_MARK Type="0" Num="3" Start="310.20585015999995" Name="n.n." Red="48" Green="90" Blue="255"/>
+            <POSITION_MARK Type="4" Num="6" Start="372.975147238" Name="n.n." Red="224" Green="100" Blue="27" End="380.359770424"/>
+            <POSITION_MARK Type="4" Num="7" Start="433.898288519" Name="n.n." Red="224" Green="100" Blue="27" End="441.282911705"/>
+        </TRACK>
+
+        <TRACK TrackID="000000002" Name="Atomic" Artist="Blondie" Album="Hits Cd1" Genre="Rock" Kind="3" Size="0"
+               TotalTime="281" DiscNumber="0" TrackNumber="2" Year="0" AverageBpm="134.329773" BitRate="156.226"
+               DateModified="2025-04-16" DateAdded="2025-06-05" SampleRate="0" PlayCount="2" LastPlayed="2025-05-07"
+               Rating="204" Tonality="Em" Location="file://localhost/Users/DJ/Blondie%20-%20Atomic.mp3" Colour="0xFFFF00">
+            <TEMPO Inizio="0.222798154" Bpm="134.33" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="0" Start="0.222798154" Name="AutoGrid" Red="48" Green="90" Blue="255"/>
+        </TRACK>
+
+        <TRACK TrackID="000000003" Name="Colour Black" Artist="Loud On Street" Album="Colour Black" Genre="Tekno"
+               Kind="3" Size="0" TotalTime="269" DiscNumber="0" TrackNumber="3" Year="0" AverageBpm="153.028107"
+               BitRate="320.0" DateModified="2025-06-01" DateAdded="2025-06-05" SampleRate="0" PlayCount="8"
+               LastPlayed="2025-06-01" Rating="204" Tonality="Cm" Location="file://localhost/Users/DJ/Loud%20On%20Street%20-%20Colour%20Black.mp3" Colour="0xFF0000">
+            <TEMPO Inizio="0.047830457" Bpm="153.03" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="4" Num="1" Start="1.61616983" Name="n.n." Red="224" Green="100" Blue="27" End="4.752848576"/>
+            <TEMPO Inizio="6.32118795" Bpm="152.97" Metro="4/4" Battito="1"/>
+            <TEMPO Inizio="13.381536527" Bpm="156.5" Metro="4/4" Battito="1"/>
+            <TEMPO Inizio="30.634310022999998" Bpm="156.01" Metro="4/4" Battito="1"/>
+            <TEMPO Inizio="50.24799583" Bpm="153.06" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="3" Start="62.689699039" Name="n.n." Red="48" Green="90" Blue="255"/>
+            <TEMPO Inizio="62.791877498000005" Bpm="154.92" Metro="4/4" Battito="1"/>
+            <TEMPO Inizio="110.429689785" Bpm="157.29" Metro="4/4" Battito="1"/>
+            <TEMPO Inizio="119.203547991" Bpm="155.0" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="4" Num="6" Start="178.042982002" Name="n.n." Red="224" Green="100" Blue="27" End="190.429911716"/>
+            <POSITION_MARK Type="4" Num="7" Start="213.65540493" Name="n.n." Red="224" Green="100" Blue="27" End="219.848869787"/>
+        </TRACK>
+
+        <TRACK TrackID="000000004" Name="Group Autogenics I" Artist="The Books" Album="" Genre="" Kind="3" Size="0"
+               TotalTime="225" DiscNumber="0" TrackNumber="4" Year="0" AverageBpm="95.242844" BitRate="320.0"
+               DateModified="2025-03-17" DateAdded="2025-06-05" SampleRate="0" PlayCount="3" LastPlayed="2025-05-07"
+               Rating="204" Tonality="Bm" Location="file://localhost/Users/DJ/The%20Books%20-%20Group%20Autogenics%20I.mp3" Colour="0x0000FF">
+            <TEMPO Inizio="0.924109459" Bpm="95.24" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="0" Start="0.924109459" Name="AutoGrid" Red="48" Green="90" Blue="255"/>
+        </TRACK>
+
+        <TRACK TrackID="000000005" Name="Creepin' Around The Bend" Artist="Reflex Blue" Album="Fuzion EP" Genre="House"
+               Kind="3" Size="0" TotalTime="348" DiscNumber="0" TrackNumber="5" Year="0" AverageBpm="134.000031"
+               BitRate="320.0" DateModified="2025-05-25" DateAdded="2025-06-05" SampleRate="0" PlayCount="5"
+               LastPlayed="2025-06-01" Rating="255" Tonality="Am" Location="file://localhost/Users/DJ/Reflex%20Blue%20-%20Creepin'%20Around%20The%20Bend.mp3" Colour="0xFFA500">
+            <TEMPO Inizio="1.75438118" Bpm="134.0" Metro="4/4" Battito="1"/>
+            <POSITION_MARK Type="0" Num="0" Start="1.75438118" Name="AutoGrid" Red="48" Green="90" Blue="255"/>
+            <POSITION_MARK Type="0" Num="4" Start="1.75438118" Name="n.n." Red="48" Green="90" Blue="255"/>
+            <POSITION_MARK Type="4" Num="1" Start="7.127514284" Name="n.n." Red="224" Green="100" Blue="27" End="14.291691756999999"/>
+            <POSITION_MARK Type="4" Num="6" Start="225.634927207" Name="n.n." Red="224" Green="100" Blue="27" End="229.217015943"/>
+        </TRACK>
+    </COLLECTION>
+</DJ_PLAYLISTS>
