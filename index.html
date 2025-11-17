@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traktor NML 🔁 Rekordbox XML | Playlist Converter</title>
+    <link rel="stylesheet" href="webapp/style.css">
+    <script src="webapp/utils.js"></script>
+    <script src="webapp/Track.js"></script>
+    <script src="webapp/nmlToXml.js"></script>
+    <script src="webapp/xmlToNml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Traktor 🔁 RekordBox</h1>
+        <p class="subtitle">
+            Convert playlists between <span class="violet">Traktor NML</span> 
+            and <span class="purple">Rekordbox XML</span> formats
+        </p>
+
+        <div class="upload-zone" id="uploadZone">
+            <span class="upload-icon">📁</span>
+            <div class="upload-text">Drop your playlist file here</div>
+            <div class="upload-hint">or click to browse (<code>.nml</code> or <code>.xml</code> files)</div>
+        </div>
+
+        <input type="file" id="fileInput" accept=".nml,.xml" />
+
+        <div id="fileInfo" class="file-info" style="display: none;">
+            <div class="file-name" id="fileName"></div>
+            <div class="file-details" id="fileDetails"></div>
+        </div>
+
+        <button id="convertBtn" class="convert-btn" disabled>
+            Select a file to convert
+        </button>
+
+        <div class="progress" id="progress" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="result" style="display: none;"></div>
+
+        <div class="supported-formats">
+            <h3>✨ Supported Features</h3>
+            <div class="format-list">
+                <div class="format-item">
+                    <div class="format-title">Hot Cues</div>
+                    <div class="format-desc">With names and colors</div>
+                </div>
+                <div class="format-item">
+                    <div class="format-title">Saved Loops</div>
+                    <div class="format-desc">With names and positions</div>
+                </div>
+                <div class="format-item">
+                    <div class="format-title">Track Colors</div>
+                    <div class="format-desc">Visual organization</div>
+                </div>
+                <div class="format-item">
+                    <div class="format-title">Metadata</div>
+                    <div class="format-desc">BPM, key, genre, etc.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileDetails = document.getElementById('fileDetails');
+        const convertBtn = document.getElementById('convertBtn');
+        const progress = document.getElementById('progress');
+        const progressBar = document.getElementById('progressBar');
+        const result = document.getElementById('result');
+
+        let selectedFile = null;
+        let fileType = null;
+
+        uploadZone.addEventListener('click', () => fileInput.click());
+        uploadZone.addEventListener('dragover', handleDragOver);
+        uploadZone.addEventListener('dragleave', handleDragLeave);
+        uploadZone.addEventListener('drop', handleDrop);
+        fileInput.addEventListener('change', handleFileSelect);
+        convertBtn.addEventListener('click', handleConvert);
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                processFile(files[0]);
+            }
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files.length > 0) {
+                processFile(e.target.files[0]);
+            }
+        }
+
+        function processFile(file) {
+            const extension = file.name.split('.').pop().toLowerCase();
+
+            if (!['nml', 'xml'].includes(extension)) {
+                showError('Please select a valid .nml or .xml file');
+                return;
+            }
+
+            selectedFile = file;
+            fileType = extension;
+
+            fileName.textContent = file.name;
+            fileDetails.textContent = `Size: ${(file.size / 1024).toFixed(1)} KB • Type: ${extension.toUpperCase()}`;
+            fileInfo.style.display = 'block';
+
+            convertBtn.disabled = false;
+            convertBtn.textContent = `Convert ${extension.toUpperCase()} to ${extension === 'nml' ? 'XML' : 'NML'}`;
+
+            result.style.display = 'none';
+        }
+
+        async function handleConvert() {
+            if (!selectedFile) return;
+
+            convertBtn.disabled = true;
+            convertBtn.classList.add('processing');
+            progress.style.display = 'block';
+            result.style.display = 'none';
+
+            try {
+                updateProgress(20);
+                const fileContent = await readFileAsText(selectedFile);
+
+                updateProgress(40);
+                let convertedContent;
+                let outputFilename;
+
+                if (fileType === 'nml') {
+                    convertedContent = await convertNMLToXML(fileContent);
+                    outputFilename = selectedFile.name.replace('.nml', '.xml');
+                } else {
+                    convertedContent = await convertXMLToNML(fileContent);
+                    outputFilename = selectedFile.name.replace('.xml', '.nml');
+                }
+
+                updateProgress(100);
+
+                setTimeout(() => {
+                    showSuccess('Conversion completed successfully!', convertedContent, outputFilename);
+                    resetUI();
+                }, 500);
+
+            } catch (error) {
+                console.error('Conversion error:', error);
+                showError(`Conversion failed: ${error.message}`);
+                resetUI();
+            }
+        }
+
+        function readFileAsText(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsText(file);
+            });
+        }
+
+        function updateProgress(percent) {
+            progressBar.style.width = percent + '%';
+        }
+
+        function resetUI() {
+            convertBtn.disabled = false;
+            convertBtn.classList.remove('processing');
+            progress.style.display = 'none';
+            progressBar.style.width = '0%';
+        }
+
+        function showSuccess(message, content, filename) {
+            result.className = 'result';
+            result.innerHTML = `
+                <div style="color: #4CAF50; font-weight: 600; margin-bottom: 10px;">✅ ${message}</div>
+                <button class="download-btn" onclick="downloadFile(filename || 'export.xml', content)">
+                    📥 Download ${filename}
+                </button>
+            `;
+            result.style.display = 'block';
+        }
+
+        function showError(message) {
+            result.className = 'result error';
+            result.innerHTML = `<div style="font-weight: 600;">❌ ${message}</div>`;
+            result.style.display = 'block';
+        }
+
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'text/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
