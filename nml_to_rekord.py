@@ -36,29 +36,18 @@ class Traktor2Rekordbox:
             "title": get_attribute(entry, "TITLE"),
             "artist": get_attribute(entry, "ARTIST"),
             "album": get_attribute(get_element(entry, "ALBUM"), "TITLE"),
-            "key": get_tonalikey(
-                get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE")
-            ),
-            "bpm": float(get_attribute(get_element(entry, "TEMPO"), "BPM"))
-            if get_attribute(get_element(entry, "TEMPO"), "BPM") != ""
-            else 0.0,
+            "key": get_tonalikey(get_attribute(get_element(entry, "MUSICAL_KEY"), "VALUE")),
+            "bpm": float(get_attribute(get_element(entry, "TEMPO"), "BPM") or 0.0),
             "color": get_track_color(get_attribute(info, "COLOR")),
             "genre": get_attribute(info, "GENRE"),
             "playtime": get_attribute(info, "PLAYTIME"),
             "playcount": get_attribute(info, "PLAYCOUNT"),
-            "bitrate": (
-                float(get_attribute(info, "BITRATE"))
-                if get_attribute(info, "BITRATE") != ""
-                else 0.0
-            )
-            / 1000,
+            "bitrate": float(get_attribute(info, "BITRATE") or 0.0) / 1000,
             "import_date": format_date(get_attribute(info, "IMPORT_DATE")),
             "modif_date": format_date(get_attribute(entry, "MODIFIED_DATE")),
             "last_played": format_date(get_attribute(info, "LAST_PLAYED")),
             "ranking": get_attribute(info, "RANKING"),
-            "file_path": self.get_file_path(
-                location
-            ),  # Store the full file path for playlist matching
+            "file_path": self.get_file_path(location),  # Store the full file path for playlist matching
         }
 
         return self.track_info
@@ -86,7 +75,7 @@ class Traktor2Rekordbox:
         file = get_attribute(location, "FILE")
 
         # Construct path in same format as PRIMARYKEY uses
-        # Example: "Macintosh HD/:Users/:jannesvaningen/:Music/:new_library/:file.mp3"
+        # Example: "Macintosh HD/:Users/:username/:Music/:new_library/:file.mp3"
         return f"{volume}{directory}{file}"
 
     @staticmethod
@@ -96,19 +85,9 @@ class Traktor2Rekordbox:
 
     def add_tempo(self, start, bpm, metro=None):
         bpm_value = round(float(bpm), 2)
+        el = ET.SubElement(self.track, "TEMPO", Inizio=f"{start}", Bpm=f"{bpm_value}", Battito="1")
         if metro:
-            ET.SubElement(
-                self.track,
-                "TEMPO",
-                Inizio=f"{start}",
-                Bpm=f"{bpm_value}",
-                Metro=metro,
-                Battito="1",
-            )
-        else:
-            ET.SubElement(
-                self.track, "TEMPO", Inizio=f"{start}", Bpm=f"{bpm_value}", Battito="1"
-            )
+            el.set("Metro", metro)
         self.added_tempos += 1
 
     def add_beatgrid(self, cue):
