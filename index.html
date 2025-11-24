@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traktor NML 🔁 Rekordbox XML | Playlist Converter</title>
     <link rel="stylesheet" href="webapp/style.css">
+    <link rel="icon" type="image/png" href="webapp/favicon.png">
     <script src="webapp/utils.js"></script>
     <script src="webapp/Track.js"></script>
     <script src="webapp/nmlToXml.js"></script>
@@ -64,6 +65,10 @@
         </div>
     </div>
 
+    <!--TODO add footer with github link-->
+    <!--TODO add screenshots of traktor and rekordbox-->
+    <!--TODO add tuto to upload to rekordbox-->
+
     <script>
         const uploadZone = document.getElementById('uploadZone');
         const fileInput = document.getElementById('fileInput');
@@ -77,6 +82,7 @@
 
         let selectedFile = null;
         let fileType = null;
+        let convertedData = null;
 
         uploadZone.addEventListener('click', () => fileInput.click());
         uploadZone.addEventListener('dragover', handleDragOver);
@@ -157,8 +163,10 @@
 
                 updateProgress(100);
 
+                convertedData = { content: convertedContent, filename: outputFilename };
+
                 setTimeout(() => {
-                    showSuccess('Conversion completed successfully!', convertedContent, outputFilename);
+                    showSuccess('Conversion completed successfully!');
                     resetUI();
                 }, 500);
 
@@ -189,15 +197,19 @@
             progressBar.style.width = '0%';
         }
 
-        function showSuccess(message, content, filename) {
+        function showSuccess(message) {
             result.className = 'result';
             result.innerHTML = `
                 <div style="color: #4CAF50; font-weight: 600; margin-bottom: 10px;">✅ ${message}</div>
-                <button class="download-btn" onclick="downloadFile(filename || 'export.xml', content)">
-                    📥 Download ${filename}
+                <button class="download-btn" id="downloadBtn">
+                    🔥 Download ${convertedData.filename}
                 </button>
             `;
             result.style.display = 'block';
+
+            document.getElementById('downloadBtn').addEventListener('click', () => {
+                downloadFile(convertedData.filename, convertedData.content);
+            });
         }
 
         function showError(message) {

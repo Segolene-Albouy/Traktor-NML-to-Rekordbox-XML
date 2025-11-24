@@ -5,6 +5,9 @@
     --violet: #667eea;
     --purple: #764ba2;
     --green: #4CAF50;
+    --d-green: #45a049;
+    --red: #f44336;
+    --d-red: #d32f2f;
 }
 
 .violet {
@@ -156,8 +159,8 @@ h1 {
 
 .error {
     background: #ffeaea;
-    border: 1px solid #f44336;
-    color: #d32f2f;
+    border: 1px solid var(--red);
+    color: var(--d-red);
 }
 
 .download-btn {
@@ -173,7 +176,7 @@ h1 {
 }
 
 .download-btn:hover {
-    background: #45a049;
+    background: var(--d-green);
     transform: translateY(-1px);
 }
 
