@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Converter | Traktor ⇄ Rekordbox</title>
+    <link rel="stylesheet" href="webapp/style.css">
+    <script src="webapp/utils.js"></script>
+    <script src="webapp/Track.js"></script>
+    <script src="webapp/nmlToXml.js"></script>
+    <script src="webapp/xmlToNml.js"></script>
+    <script src="webapp/analysis.js"></script>
+    <script src="webapp/converter.js"></script>
+    <link rel="icon" type="image/png" href="webapp/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Playlist Converter</h1>
+            <p class="subtitle">Traktor ⇄ Rekordbox</p>
+        </header>
+
+        <main id="app">
+            <section id="uploadSection" class="section">
+                <div class="upload-zone" id="uploadZone">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <div class="upload-text">Drop playlist file</div>
+                    <div class="upload-hint">.nml or .xml</div>
+                </div>
+                <input type="file" id="fileInput" accept=".nml,.xml" hidden />
+            </section>
+
+            <section id="actionSection" class="section" style="display: none;">
+                <div class="file-card">
+                    <div class="file-icon">📄</div>
+                    <div class="file-meta">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-details" id="fileDetails"></div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="action-btn feature" data-action="convert" title="Convert playlist to the other format">
+                        <span class="feature-icon">🔁</span>
+                        <span>Convert to <span id="targetFormat"></span></span>
+                    </button>
+                    <button class="action-btn feature" data-action="analyze" title="Get information on cues, loops, BPM, and key of each track">
+                        <span class="feature-icon">⏩️</span>
+                        <span>Analyze tracklist</span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="progressSection" class="section" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Processing...</div>
+            </section>
+
+            <section id="resultSection" class="section" style="display: none;"></section>
+        </main>
+
+        <footer>
+            <div class="footer-links">
+                Code available on
+                <a href="https://github.com/Segolene-Albouy/Traktor-NML-to-Rekordbox-XML" target="_blank">GitHub</a> •
+                <a href="https://github.com/Segolene-Albouy/Traktor-NML-to-Rekordbox-XML/issues/new" target="_blank">Requests & feedback</a>
+            </div>
+            <div class="footer-links" style="padding-top: .5em;">
+                Made with 🐬 by Ségolène Albouy
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        new PlaylistConverter();
+    </script>
+</body>
+</html>
