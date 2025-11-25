@@ -15,9 +15,8 @@ class Track {
     modif_date
     last_played
     ranking
-    comments
+    comments = "";
     location = "";
-
 
     constructor(xml_track) {
 
@@ -41,4 +40,10 @@ class Cue {
     index = -1;
     color = "";
     isBeatGrid = false;
+}
+
+class Playlist {
+    name = "";
+    type = "";
+    tracks = [];
 }
