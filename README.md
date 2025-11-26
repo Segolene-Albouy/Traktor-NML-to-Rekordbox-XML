@@ -1,6 +1,9 @@
 # Traktor-NML-to-Rekordbox-XML
 
-Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
+> ## Access the [online tool](https://segolene-albouy.github.io/Traktor-NML-to-Rekordbox-XML/) 🌍
+
+Python script to convert your playlists from Traktor NML to Rekordbox XML and vice versa.
+It keeps:
 
 - [x] Hot Cues (with names)
 - [x] Saved loops (with names)
@@ -11,10 +14,10 @@ Python script to convert your Traktor playlists to Rekordbox XML. It keeps:
 - [x] Flexible beatgrid
 - [x] Rekordbox XML <=> Traktor NML
 - [x] Playlist tree-structure
+- [x] Tracklist cue point analysis
 
 ### To be added
 
-- [ ] Web interface to load file
 - [ ] Custom loop length for Traktor
 
 ## How to
