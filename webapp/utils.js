@@ -4,13 +4,13 @@ const DATE_FORMAT = {
 };
 
 const COLOR_MAP = {
-    "0xFF0000": "1",
-    "0xFFA500": "2",
-    "0xFFFF00": "3",
-    "0x00FF00": "4",
-    "0x0000FF": "5",
-    "0xFF007F": "6",
-    "0x660099": "7",
+    "0xFF0000": "1", // Red
+    "0xFFA500": "2", // Orange
+    "0xFFFF00": "3", // Yellow
+    "0x00FF00": "4", // Green
+    "0x0000FF": "5", // Blue
+    "0x660099": "6", // Purple
+    "0xFF007F": "7", // Pink
 };
 
 const TONALITY_MAP = {
@@ -91,8 +91,8 @@ function today() {
     return target === "traktor" ? `${year}/${month}/${day}` : `${year}-${month}-${day}`;
 }
 
-function getTraktorTrackColor(rgbColor) {
-    return COLOR_MAP[rgbColor] || "";
+function getTraktorTrackColor(hexColor) {
+    return COLOR_MAP[hexColor] || "";
 }
 
 function getRekordboxTrackColor(colorNb) {
