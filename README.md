@@ -19,6 +19,7 @@ It keeps:
 ### To be added
 
 - [ ] Custom loop length for Traktor
+- [ ] Custom map for Cues and Tracks colors
 
 ## How to
 

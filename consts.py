@@ -10,8 +10,8 @@ COLOR_MAP = {
     "0xFFFF00": "3",  # Yellow
     "0x00FF00": "4",  # Green
     "0x0000FF": "5",  # Blue
-    "0xFF007F": "6",  # Rose
-    "0x660099": "7",  # Violet
+    "0x660099": "6",  # Purple
+    "0xFF007F": "7",  # Pink
 }
 
 TONALITY_MAP = {
